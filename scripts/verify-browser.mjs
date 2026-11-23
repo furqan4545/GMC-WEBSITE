@@ -10,7 +10,7 @@ const consultationLink = '.elementor-widget-form a.gmc-button';
 const destinations = [
   ['homepage', '/', '.gmc-hero h1'],
   ['treatment', '/dental-veneers/', '.gmc-visual-page-title'],
-  ['article', '/plastic-surgery/nose-job-korea/', '.gmc-visual-page-title'],
+  ['article', '/plastic-surgery/facelift-recovery/', '.gmc-editorial-masthead h1'],
   ['category', '/plastic-surgery/nose/', '.gmc-page-title'],
   ['blog', '/blog/', '.gmc-page-title'],
   ['gallery', '/bna-gallery/', '.jet-listing-grid__items'],
@@ -47,6 +47,18 @@ async function check(browser, options, label, rows, render) {
         await page.locator('.gmc-logo img').evaluate(image => image.decode());
         const sizes = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
         assert.ok(sizes[0] <= sizes[1] + 1, `Horizontal overflow ${sizes.join('/')}`);
+
+        if (name === 'article') {
+          const desktop = options.viewport.width >= 1024;
+          const heading = page.locator(selector);
+          assert.ok(await heading.evaluate(element => parseFloat(getComputedStyle(element).fontSize)) <= (desktop ? 56 : 36));
+          assert.equal(await page.locator('.gmc-article-page h1').count(), 1);
+          if (desktop) {
+            const date = await page.locator('.gmc-article-meta .elementor-post-info a').first().boundingBox();
+            const category = await page.locator('.gmc-article-meta .jet-listing-dynamic-terms a').first().boundingBox();
+            assert.ok(date && category && Math.abs(date.y - category.y) <= 2, 'Article date and categories align');
+          }
+        }
 
         if (name === 'homepage' || name === '/ru/') {
           const banner = await page.locator('.gmc-hero img').evaluate(async image => {

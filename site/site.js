@@ -31,6 +31,7 @@
   for (const image of document.images) {
     if (image.complete && image.currentSrc && !image.naturalWidth) recoverImage(image);
   }
+  document.querySelectorAll('img.e-page-transition--preloader:not([alt])').forEach(image => { image.alt = ''; });
 
   const copy = {
     en: ['Medical concierge in Seoul', 'We help international patients choose a clinic, plan their visit and get support from the first consultation through aftercare.', 'Free consultation', 'Find a treatment', 'Treatments', 'Menu', 'Close menu', 'Language', 'Skip to content', 'Navigation'],
@@ -42,9 +43,58 @@
   };
 
   const languageNames = { en: 'English', zh: '简体中文', id: 'Bahasa Indonesia', th: 'ภาษาไทย', ru: 'Русский', tw: '繁體中文' };
+  const navigationLabels = {
+    id: {
+      about: 'Tentang kami',
+      categories: {
+        'double-eyelid-surgery': 'Bedah plastik',
+        'skin-dermatology-treatments': 'Estetika',
+        'smile-lasik': 'LASIK',
+        'dental-veneers': 'Perawatan gigi',
+      },
+      pages: {
+        services: 'Layanan kami',
+        'care-team': 'Tim perawatan kami',
+        'best-price-guarantee': 'Jaminan harga terbaik',
+        'gmc-verification-process': 'Proses verifikasi GMC',
+        'bna-gallery': 'Galeri',
+        partners: 'Mitra kami',
+        faqs: 'Pertanyaan umum',
+        'skin-dermatology-treatments': 'Perawatan kulit',
+        'skin-boosters': 'Skin booster',
+        'lifting-tightening-treatments': 'Pengencangan kulit',
+        'botox-fillers': 'Botox dan filler',
+      },
+    },
+    th: {
+      about: 'เกี่ยวกับเรา',
+      categories: {
+        'double-eyelid-surgery': 'ศัลยกรรมตกแต่ง',
+        'skin-dermatology-treatments': 'ความงาม',
+        'smile-lasik': 'เลสิก',
+        'dental-veneers': 'ทันตกรรม',
+      },
+      pages: {
+        services: 'บริการของเรา',
+        'care-team': 'ทีมดูแลของเรา',
+        'best-price-guarantee': 'รับประกันราคาที่ดีที่สุด',
+        'gmc-verification-process': 'กระบวนการตรวจสอบของ GMC',
+        blog: 'บล็อก',
+        'bna-gallery': 'แกลเลอรี',
+        partners: 'พันธมิตรของเรา',
+        faqs: 'คำถามที่พบบ่อย',
+        'skin-dermatology-treatments': 'การรักษาผิวหนัง',
+        'skin-boosters': 'สกินบูสเตอร์',
+        'lifting-tightening-treatments': 'ยกกระชับผิว',
+        'botox-fillers': 'โบท็อกซ์และฟิลเลอร์',
+      },
+    },
+  };
+  const aestheticsPages = new Set(['skin-dermatology-treatments', 'skin-boosters', 'lifting-tightening-treatments', 'botox-fillers']);
   const localePath = location.pathname.split('/')[1];
   const locale = localePath === 'tw' ? 'zh-TW' : localePath;
   const [title, introduction, consultation, findTreatment, treatments, menu, closeMenu, language, skip, navigation] = copy[locale] || copy.en;
+  const localizedNav = navigationLabels[locale];
   const body = document.body;
   const content = document.querySelector('main.site-main, .elementor-location-single, .elementor-location-archive, main');
   const legacy = document.querySelector('header.elementor-location-header');
@@ -62,6 +112,19 @@
     return node;
   };
   const sourceLink = (source, className = '') => link(source.textContent.trim(), source.getAttribute('href'), className);
+  const linkSlug = source => source.pathname.split('/').filter(Boolean).at(-1);
+  const navLink = (source, className = '') => {
+    const page = linkSlug(source);
+    const label = localizedNav?.pages[page] || source.textContent.trim();
+    let href = source.getAttribute('href');
+    if (localizedNav && source.pathname.startsWith('/tw/') && aestheticsPages.has(page)) {
+      href = source.pathname.replace('/tw/', `/${locale}/`) + source.search + source.hash;
+    }
+    const anchor = link(label, href, className);
+    const current = source.getAttribute('aria-current');
+    if (current) anchor.setAttribute('aria-current', current);
+    return anchor;
+  };
   const uniqueLinks = (nodes) => {
     const seen = new Set();
     return [...nodes].filter(node => {
@@ -130,7 +193,7 @@
     }
     for (const entry of candidates) {
       const item = element('li');
-      item.append(sourceLink(entry));
+      item.append(navLink(entry));
       list.append(item);
     }
     return list;
@@ -141,18 +204,22 @@
     item.append(child);
     navList.append(item);
   };
-  if (aboutGroup) addItem(disclosure(aboutGroup.primary.textContent.trim(), sectionLinks(aboutGroup), 'gmc-about-menu'));
+  if (aboutGroup) {
+    const label = localizedNav?.about || aboutGroup.primary.textContent.trim();
+    addItem(disclosure(label, sectionLinks(aboutGroup), 'gmc-about-menu'));
+  }
 
   if (treatmentSources.length) {
     const menuPanel = element('div', 'gmc-treatment-panel');
     for (const group of treatmentSources) {
       const details = element('details', 'gmc-treatment-group');
-      details.append(element('summary', '', group.primary.textContent.trim()), sectionLinks(group));
+      const label = localizedNav?.categories[linkSlug(group.primary)] || group.primary.textContent.trim();
+      details.append(element('summary', '', label), sectionLinks(group));
       menuPanel.append(details);
     }
     addItem(disclosure(treatments, menuPanel, 'gmc-treatment-menu'));
   }
-  for (const entry of standaloneSources) addItem(sourceLink(entry, 'gmc-nav-action'));
+  for (const entry of standaloneSources) addItem(navLink(entry, 'gmc-nav-action'));
 
   const langs = legacy.querySelectorAll('.elementor-element-2599253f .elementor-nav-menu--main li > a[href]');
   if (langs.length) {
@@ -179,14 +246,16 @@
 
   const bar = element('div', 'gmc-header-inner wrap');
   const head = element('header', 'gmc-header');
-  const cta = link(consultation, consult.getAttribute('href'), 'gmc-button gmc-header-cta');
-  const toggle = element('button', 'gmc-menu-toggle', menu);
+  const headerConsultation = locale === 'ru' ? 'Консультация' : consultation;
+  const cta = link(headerConsultation, consult.getAttribute('href'), 'gmc-button gmc-header-cta');
+  if (headerConsultation !== consultation) cta.setAttribute('aria-label', consultation);
+  const toggle = element('button', 'gmc-menu-toggle');
   toggle.type = 'button';
   toggle.setAttribute('aria-controls', nav.id);
   const mobile = matchMedia('(max-width: 1050px)');
   const setMenu = (open) => {
     const expanded = mobile.matches && open;
-    toggle.textContent = expanded ? closeMenu : menu;
+    toggle.setAttribute('aria-label', expanded ? closeMenu : menu);
     toggle.setAttribute('aria-expanded', String(expanded));
     nav.hidden = mobile.matches && !expanded;
     if (!expanded) {
@@ -248,13 +317,12 @@
       hero.dataset.enter = 'hero';
       hero.setAttribute('aria-labelledby', 'gmc-home-title');
       const words = element('div', 'gmc-hero-copy');
-      const kicker = element('p', 'gmc-kicker', 'Gangnam Medical Concierge');
       const heading = element('h1', '', title);
       heading.id = 'gmc-home-title';
       const actions = element('div', 'gmc-hero-actions');
       categories.id ||= 'gmc-treatments';
       actions.append(link(consultation, consult.getAttribute('href'), 'gmc-button'), link(findTreatment, '#' + categories.id, 'gmc-button gmc-button-secondary'));
-      words.append(kicker, heading, element('p', 'gmc-intro', introduction), actions);
+      words.append(heading, element('p', 'gmc-intro', introduction), actions);
       function campaignPicture(campaign, heroImage = false) {
         const picture = element('picture');
         if (campaign.mobile) {
@@ -289,19 +357,6 @@
         originalHero.parentElement.append(banners);
       }
       originalHero.hidden = true;
-
-      const verified = content.querySelector('.elementor-element-ec053e9');
-      if (verified) {
-        verified.dataset.moment = 'picture-develops';
-        if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-          const observer = new IntersectionObserver(entries => {
-            if (!entries.some(entry => entry.isIntersecting)) return;
-            verified.classList.add('gmc-photo-arrived');
-            observer.disconnect();
-          }, { threshold: 0.2 });
-          observer.observe(verified);
-        }
-      }
     }
   }
 
@@ -353,6 +408,7 @@
         trigger.type = 'button';
         trigger.dataset.photoSrc = href;
         const caption = item.querySelector('.elementor-widget-text-editor')?.textContent.trim();
+        trigger.dataset.photoAlt = image.alt || caption || '';
         trigger.setAttribute('aria-label', caption ? `${photoLabel}. ${caption}` : photoLabel);
         const thumbnail = image.cloneNode(false);
         thumbnail.alt = '';
@@ -370,6 +426,7 @@
       const dialog = element('dialog', 'gmc-photo-dialog');
       const close = element('button', 'gmc-photo-close', '×');
       const photo = element('img');
+      photo.alt = '';
       dialog.setAttribute('aria-label', photoLabel);
       close.type = 'button';
       close.setAttribute('aria-label', closeLabel);
@@ -390,7 +447,7 @@
         if (!trigger || dialog.open) return;
         opener = trigger;
         photo.src = trigger.dataset.photoSrc;
-        photo.alt = photoLabel;
+        photo.alt = trigger.dataset.photoAlt;
         dialog.showModal();
         close.focus();
       });
@@ -495,7 +552,8 @@
     const firstSection = content.querySelector('.e-parent');
     const topHeading = content.querySelector('h1, h2');
     const plainTitlePage = body.matches('.page-id-50, .page-id-52, .page-id-46');
-    const titlePage = body.matches('.page-id-549, .page-id-56, .archive');
+    const blogArchive = /\/all-blog-posts\/?$/.test(location.pathname);
+    const titlePage = blogArchive || body.matches('.page-id-549, .page-id-56, .archive');
     const isArticle = content.classList.contains('elementor-location-single') && body.classList.contains('single-post');
     const firstIsMedia = firstSection
       && firstSection.getAttribute('data-settings')?.includes('background_background')
@@ -504,8 +562,22 @@
 
     content.classList.add('gmc-inner-page');
     if (plainTitlePage && topHeading && firstSection?.contains(topHeading)) {
-      promoteHeading(topHeading).classList.add('gmc-masthead-title');
+      const heading = promoteHeading(topHeading);
+      heading.classList.add('gmc-masthead-title');
       firstSection.classList.add('gmc-title-band');
+      if (body.classList.contains('page-id-50')) {
+        const contactCopy = {
+          zh: ['联系我们', '预约免费咨询'],
+          'zh-TW': ['聯絡我們', '預約免費諮詢'],
+          id: ['Kontak', 'Jadwalkan konsultasi gratis'],
+          th: ['ติดต่อเรา', 'จองเวลาปรึกษาฟรี'],
+        }[locale];
+        if (contactCopy) {
+          if (heading.textContent.trim() === 'Contact') heading.textContent = contactCopy[0];
+          const bookingHeading = content.querySelector('.elementor-element-22fd833 .elementor-heading-title');
+          if (bookingHeading?.textContent.trim() === 'Book Your Free Consultation') bookingHeading.textContent = contactCopy[1];
+        }
+      }
     } else if (topHeading && firstIsMedia) {
       const originalWrapper = topHeading.closest('.elementor-widget-theme-post-title');
       const heading = promoteHeading(topHeading);
@@ -514,35 +586,102 @@
       if (isArticle) {
         const masthead = element('header', 'gmc-editorial-masthead');
         const breadcrumb = content.querySelector('.rank-math-breadcrumb');
-        if (breadcrumb) masthead.append(breadcrumb);
+        if (breadcrumb) {
+          const breadcrumbWidget = breadcrumb.closest('.elementor-widget-shortcode');
+          breadcrumb.querySelector('.last')?.setAttribute('aria-current', 'page');
+          masthead.append(breadcrumb);
+          if (!breadcrumbWidget?.textContent.trim()) breadcrumbWidget?.remove();
+        }
         masthead.append(heading);
         const metadata = element('div', 'gmc-article-meta');
-        const terms = content.querySelector('.elementor-element-ef0a64b');
-        const date = content.querySelector('.elementor-element-c67a286');
-        if (terms) metadata.append(terms);
-        if (date) metadata.append(date);
+        const terms = content.querySelector('.elementor-element-ef0a64b .jet-listing-dynamic-terms');
+        const date = content.querySelector('.elementor-element-c67a286 .elementor-post-info');
+        for (const details of [date, terms]) {
+          if (!details) continue;
+          const widget = details.closest('.elementor-widget');
+          metadata.append(details);
+          if (!widget?.textContent.trim()) widget?.remove();
+        }
         if (metadata.childElementCount) masthead.append(metadata);
         firstSection.before(masthead);
+        firstSection.classList.add('gmc-article-cover');
         content.classList.add('gmc-article-page');
+        for (const bodyHeading of content.querySelectorAll('.elementor-widget-theme-post-content h1')) {
+          promoteHeading(bodyHeading, 'h2');
+        }
       } else {
         firstSection.before(heading);
         content.classList.add('gmc-treatment-page');
       }
       if (originalWrapper && !originalWrapper.textContent.trim()) originalWrapper.remove();
-    } else if (titlePage && !content.querySelector('h1') && pageTitle()) {
-      content.prepend(element('h1', 'gmc-page-title', pageTitle()));
+    } else if (titlePage && !content.querySelector('h1')) {
+      const blogTitle = {
+        zh: '全部文章', 'zh-TW': '所有文章', id: 'Semua artikel', th: 'บทความทั้งหมด', ru: 'Все статьи',
+      }[locale] || 'All articles';
+      const label = blogArchive ? blogTitle : pageTitle();
+      if (label) content.prepend(element('h1', 'gmc-page-title', label));
     } else if (topHeading && !content.querySelector('h1')) {
       promoteHeading(topHeading).classList.add('gmc-masthead-title');
     }
 
     const blogCategories = content.querySelector('.elementor-element-9d37328');
     const blogLinks = uniqueLinks(blogCategories?.querySelectorAll('a[href]') || []);
-    if (blogLinks.length) {
+    if (body.classList.contains('page-id-549')) {
+      const blogCopy = {
+        en: {
+          headings: ['Blog', 'Weekly Best', 'Plastic Surgery', 'Latest Blogs', 'View All Posts'],
+          topics: 'Blog topics',
+          categories: ['Plastic surgery', 'Aesthetics', 'Guides', 'Food', 'Activities', 'Stays'],
+        },
+        zh: {
+          headings: ['博客', '本周精选', '整形手术', '最新文章', '查看全部文章'],
+          topics: '文章主题',
+          categories: ['整形手术', '美容', '指南', '美食', '活动', '住宿'],
+        },
+        'zh-TW': {
+          headings: ['部落格', '本週精選', '整形外科', '最新文章', '查看所有文章'],
+          topics: '文章主題',
+          categories: ['整形外科', '醫學美容', '指南', '美食', '活動', '住宿'],
+        },
+        id: {
+          headings: ['Blog', 'Pilihan minggu ini', 'Bedah plastik', 'Artikel terbaru', 'Lihat semua artikel'],
+          topics: 'Topik blog',
+          categories: ['Bedah plastik', 'Estetika', 'Panduan', 'Kuliner', 'Aktivitas', 'Penginapan'],
+        },
+        th: {
+          headings: ['บล็อก', 'บทความแนะนำประจำสัปดาห์', 'ศัลยกรรมตกแต่ง', 'บทความล่าสุด', 'ดูบทความทั้งหมด'],
+          topics: 'หัวข้อบทความ',
+          categories: ['ศัลยกรรมตกแต่ง', 'ความงาม', 'คู่มือ', 'อาหาร', 'กิจกรรม', 'ที่พัก'],
+        },
+        ru: {
+          headings: ['Блог', 'Лучшее за неделю', 'Пластическая хирургия', 'Последние статьи', 'Смотреть все публикации'],
+          topics: 'Темы блога',
+          categories: ['Пластическая хирургия', 'Эстетика', 'Гиды', 'Еда', 'Активности', 'Проживание'],
+        },
+      };
+      const labels = blogCopy[locale] || blogCopy.en;
+      const headings = [
+        [':scope > .gmc-page-title', 'Blog'],
+        ['.elementor-element-ba1ff4d h2', 'Weekly Best'],
+        ['.elementor-element-7443581 h2', 'Plastic Surgery'],
+        ['.elementor-element-e25c555 h2', 'Latest Blogs'],
+        ['.elementor-element-1962c17 .elementor-button-text', 'View All Posts'],
+      ];
+      for (const [index, [selector, source]] of headings.entries()) {
+        const node = content.querySelector(selector);
+        if (node?.textContent.trim() === source) node.textContent = labels.headings[index];
+      }
       const rail = element('nav', 'gmc-blog-categories');
-      rail.setAttribute('aria-label', navigation);
-      for (const item of blogLinks) rail.append(sourceLink(item));
-      blogCategories.before(rail);
-      blogCategories.hidden = true;
+      rail.setAttribute('aria-label', labels.topics);
+      const categorySlugs = ['plastic-surgery', 'aesthetics', 'guides', 'must-eats', 'activities', 'stays'];
+      for (const item of blogLinks) {
+        const label = labels.categories[categorySlugs.indexOf(linkSlug(item))] || item.textContent.trim();
+        rail.append(link(label, item.getAttribute('href')));
+      }
+      if (rail.childElementCount) {
+        blogCategories.before(rail);
+        blogCategories.hidden = true;
+      }
     }
   }
 
@@ -553,6 +692,11 @@
   }
 
   const footer = document.querySelector('.elementor-location-footer');
+  for (const channel of footer?.querySelectorAll('a.elementor-social-icon[href]') || []) {
+    if (channel.hasAttribute('aria-label') || channel.textContent.trim()) continue;
+    const label = { 'open.kakao.com': 'KakaoTalk', 'www.xiaohongshu.com': 'Xiaohongshu' }[channel.hostname];
+    if (label) channel.setAttribute('aria-label', label);
+  }
   const closing = footer?.querySelector('.elementor-element-9064875');
   if (closing) closing.append(link(consultation, consult.getAttribute('href'), 'gmc-button gmc-footer-cta'));
 
@@ -584,6 +728,7 @@
       photo.onload = () => {
         if (photoSources.get(frame) === photoUrl && photo.naturalHeight) {
           frame.style.setProperty('--gmc-photo-ratio', `${photo.naturalWidth} / ${photo.naturalHeight}`);
+          if (frame.classList.contains('gmc-article-cover')) frame.style.setProperty('--gmc-cover-width', `${photo.naturalWidth}px`);
         }
       };
       photo.src = photoUrl;

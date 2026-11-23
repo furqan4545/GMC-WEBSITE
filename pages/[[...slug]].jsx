@@ -26,6 +26,7 @@ export async function getStaticProps({ params }) {
   if (!page) return { notFound: true };
 
   const $ = load(page.html);
+  if ($('head link[rel="canonical"]').length) $('body link[rel="canonical"]').remove();
   return {
     props: {
       document: {

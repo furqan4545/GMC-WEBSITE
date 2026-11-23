@@ -146,13 +146,34 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-languages img { width: 22px; height: 16px; object-fit: cover; }
 .gmc-header .gmc-menu-toggle {
   display: none;
-  padding: 9px 12px;
-  min-height: 44px;
+  position: relative;
+  inline-size: 44px;
+  block-size: 44px;
+  padding: 0;
   color: var(--gmc-action);
   border: 1px solid var(--gmc-line);
   border-radius: 8px;
   background: none;
-  font: 600 .9rem/1.2 var(--gmc-text);
+}
+.gmc-menu-toggle::before,
+.gmc-menu-toggle::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 16px;
+  block-size: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.gmc-menu-toggle::before { transform: translate(-50%, -4px); }
+.gmc-menu-toggle::after { transform: translate(-50%, 2px); }
+.gmc-menu-toggle[aria-expanded="true"]::before { transform: translate(-50%, -50%) rotate(45deg); }
+.gmc-menu-toggle[aria-expanded="true"]::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.gmc-redesign.home .gmc-header-cta {
+  background: transparent;
+  border-color: var(--gmc-line);
+  color: var(--gmc-action);
 }
 .gmc-redesign .gmc-button,
 .gmc-redesign .elementor-widget-form button[type="submit"] {
@@ -175,6 +196,7 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   .gmc-header .gmc-nav-action:hover { text-decoration: underline; text-underline-offset: 5px; }
   .gmc-header .gmc-sub-list a:hover { background: var(--gmc-surface); }
   .gmc-redesign .gmc-button:hover { background: var(--gmc-active); color: #fff; }
+  .gmc-redesign.home .gmc-header-cta:hover { background: var(--gmc-surface); color: var(--gmc-action); }
 }
 
 .gmc-redesign .gmc-hero {
@@ -188,12 +210,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   padding: clamp(34px, 5.5vh, 70px) 0;
 }
 .gmc-hero-copy { align-self: center; min-width: 0; }
-.gmc-redesign .gmc-kicker {
-  color: var(--gmc-action);
-  margin: 0 0 23px;
-  font-size: .95rem;
-  font-weight: 700;
-}
 .gmc-redesign .gmc-hero h1 {
   margin: 0;
   max-width: 11ch;
@@ -210,6 +226,7 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   line-height: 1.53;
 }
 .gmc-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.gmc-redesign .gmc-hero-actions > .gmc-button { min-inline-size: min-content; overflow-wrap: normal; }
 .gmc-redesign .gmc-hero-visual {
   margin: 0;
   align-self: center;
@@ -230,14 +247,9 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-campaigns img { margin: 0 auto; max-width: 1060px; }
 @media (prefers-reduced-motion: no-preference) {
   .gmc-hero[data-enter] .gmc-hero-copy { animation: gmc-enter 440ms var(--gmc-ease) both; }
-  .gmc-photo-arrived img { animation: gmc-picture 650ms var(--gmc-ease) both; }
   @keyframes gmc-enter {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes gmc-picture {
-    from { opacity: .72; }
-    to { opacity: 1; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -483,7 +495,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   }
   .gmc-redesign .gmc-hero h1 { font-size: clamp(2.75rem, 10.5vw, 4.2rem); }
   .gmc-redesign .gmc-hero-visual { aspect-ratio: 17 / 30; }
-  .gmc-redesign .gmc-kicker { margin-bottom: 15px; }
   .gmc-redesign .gmc-intro { margin-top: 16px; }
   .gmc-hero-actions { margin-top: 22px; }
   .gmc-hero-actions > * { flex: 1 1 134px; }
@@ -539,7 +550,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   .gmc-header-inner { grid-template-columns: minmax(80px, 1fr) minmax(0, auto) auto; }
   .gmc-logo img { max-width: 100%; }
   .gmc-header .gmc-header-cta { max-width: clamp(116px, 39vw, 172px); }
-  .gmc-header .gmc-menu-toggle { max-width: 92px; }
 }
 
 @media (max-width: 800px) {
@@ -552,9 +562,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 }
 .gmc-redesign.page-id-1269 .elementor-element-b551a02 {
   background: var(--gmc-surface);
-}
-.gmc-redesign.page-id-50 .elementor-element-3b1ee1e {
-  padding-top: clamp(24px, 5vw, 64px);
 }
 .gmc-redesign .gmc-title-band.gmc-title-band .gmc-masthead-title {
   color: #fffcf8;
@@ -959,59 +966,111 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-redesign.home .gmc-campaigns { max-width: min(100%, 1000px); }
 
 /* Editorial articles and discovery lists */
+.gmc-article-page {
+  --gmc-editorial-frame: min(var(--gmc-frame), 960px);
+  --gmc-reading-width: 760px;
+}
 .gmc-editorial-masthead {
-  width: var(--gmc-frame);
+  width: var(--gmc-editorial-frame);
   margin: 0 auto;
-  padding: clamp(29px, 5vw, 64px) 0 clamp(21px, 3vw, 37px);
+  padding: clamp(24px, 3vw, 44px) 0 clamp(20px, 2.5vw, 32px);
 }
 .gmc-redesign .gmc-editorial-masthead .gmc-page-title {
   width: auto;
-  max-width: 26ch;
+  max-width: 28ch;
   margin: 0;
   padding: 0;
-  font: 400 clamp(2.35rem, 5vw, 4.9rem)/1.06 var(--gmc-display);
-  letter-spacing: -.035em;
+  font: 400 clamp(2rem, 3.7vw, 3.5rem)/1.1 var(--gmc-display);
+  letter-spacing: -.025em;
   text-wrap: balance;
 }
 .gmc-editorial-masthead .rank-math-breadcrumb p {
-  margin: 0 0 clamp(12px, 2.1vw, 25px);
+  margin: 0 0 clamp(12px, 2vw, 20px);
   font: 500 .875rem/1.55 var(--gmc-text);
 }
 .gmc-editorial-masthead .rank-math-breadcrumb a { color: var(--gmc-action); text-underline-offset: .2em; }
-.gmc-editorial-masthead .rank-math-breadcrumb .last { color: var(--gmc-muted); }
+.gmc-editorial-masthead .rank-math-breadcrumb .separator:has(+ .last) { display: none; }
+.gmc-editorial-masthead .rank-math-breadcrumb .last {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .gmc-redesign .gmc-article-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 21px;
-  padding-top: clamp(13px, 2vw, 23px);
+  align-items: flex-start;
+  gap: 8px 16px;
+  padding-top: clamp(16px, 2vw, 24px);
   color: var(--gmc-muted);
   font: 500 .875rem/1.45 var(--gmc-text);
 }
-.gmc-redesign .gmc-article-meta .elementor-widget { width: auto; max-width: 100%; }
-.gmc-redesign .gmc-article-meta :is(.elementor-post-info, .jet-listing-dynamic-terms) { margin: 0; }
-.gmc-redesign .gmc-article-meta :is(.elementor-post-info a, .jet-listing-dynamic-terms__link) {
-  color: var(--gmc-action);
+.gmc-redesign .gmc-article-meta :is(.jet-listing-dynamic-terms, .elementor-post-info) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
 }
-.gmc-redesign .gmc-article-meta .jet-listing-dynamic-terms__link {
-  display: inline-block;
-  margin-block: 2px;
-  padding: 4px 9px;
+.gmc-redesign .gmc-article-meta .jet-listing-dynamic-terms { flex: 1 1 min(100%, 320px); min-width: 0; }
+.gmc-redesign .gmc-article-meta .elementor-post-info li { list-style: none; margin: 0; }
+.gmc-redesign .gmc-article-meta .jet-listing-dynamic-terms .jet-listing-dynamic-terms__link {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0 !important;
+  padding: 4px 12px;
   border: 1px solid var(--gmc-line);
-  border-radius: 6px;
-  background: var(--gmc-white);
-  font-size: .87rem;
-  line-height: 1.25;
+  border-radius: 8px;
+  background: var(--gmc-white) !important;
+  color: var(--gmc-action) !important;
+  font: inherit;
+  overflow-wrap: anywhere;
 }
+.gmc-redesign .gmc-article-meta .elementor-post-info a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--gmc-muted);
+  font: inherit;
+}
+.gmc-redesign .gmc-article-meta .elementor-post-info .elementor-icon-list-text {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+.gmc-redesign .gmc-article-meta .elementor-post-info svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gmc-redesign .gmc-article-meta .jet-listing-dynamic-terms__link:hover { text-decoration: underline; }
+}
+.gmc-redesign .gmc-article-page > .gmc-article-cover.gmc-photo-panel {
+  width: min(var(--gmc-editorial-frame), var(--gmc-cover-width, 100%)) !important;
+  max-height: min(68svh, 600px);
+  border: none;
+  background-color: transparent;
+}
+.gmc-layout-ready .gmc-article-page > .gmc-article-cover:not(.gmc-photo-panel) { display: none !important; }
 .gmc-redesign .gmc-article-page .elementor-element-2fe08bc {
-  --content-width: 790px;
-  padding: clamp(23px, 5vw, 70px) var(--gmc-gutter);
+  --content-width: var(--gmc-reading-width);
+  padding: clamp(24px, 4vw, 48px) var(--gmc-gutter);
   background: var(--gmc-paper);
 }
+.gmc-redesign .gmc-article-page .elementor-element-2fe08bc > .e-con-inner { padding-block: 0; }
 .gmc-redesign .gmc-article-page .elementor-widget-theme-post-content {
   margin-inline: auto;
   font: 400 clamp(1rem, 1.35vw, 1.15rem)/1.76 var(--gmc-text);
 }
+.gmc-redesign .gmc-article-page .elementor-widget-theme-post-content :is(figure, img, video, iframe) {
+  max-width: 100% !important;
+}
+.gmc-redesign .gmc-article-page .elementor-widget-theme-post-content img { height: auto !important; }
 .gmc-redesign .gmc-article-page .elementor-widget-theme-post-content :is(h2, h3, h4) {
   max-width: 31ch;
   margin: 1.4em 0 .52em;
@@ -1096,12 +1155,18 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   min-height: 0 !important;
   max-height: none !important;
 }
+
+.gmc-redesign:is(.page-id-549, .blog, .category) .gmc-inner-page > .gmc-page-title {
+  padding-block: clamp(24px, 3.4vw, 48px) clamp(16px, 2vw, 24px);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
 .gmc-blog-categories { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 8px; width: 100%; }
 .gmc-redesign .gmc-blog-categories a {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
-  padding: 6px 13px;
+  min-height: 44px;
+  padding: 8px 12px;
   border: 1px solid var(--gmc-line);
   border-radius: 7px;
   background: var(--gmc-white);
@@ -1110,6 +1175,15 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   text-decoration: none;
 }
 .gmc-redesign.page-id-549 .elementor-element-1abcf50 { padding-top: 0; }
+.gmc-redesign.page-id-549 .elementor-element-1abcf50 > .e-con-inner { row-gap: clamp(16px, 2vw, 28px); }
+.gmc-redesign.page-id-549 :is(.elementor-element-ba1ff4d, .elementor-element-7443581, .elementor-element-e25c555) {
+  padding-block-start: 0;
+}
+.gmc-redesign.page-id-549 :is(.elementor-element-ba1ff4d, .elementor-element-7443581, .elementor-element-e25c555) h2 {
+  text-align: start;
+  font: 400 clamp(1.5rem, 2.5vw, 2rem)/1.2 var(--gmc-display);
+}
+.gmc-redesign.page-id-549 .elementor-element-d15c204 { padding-inline: 0; }
 @media (hover: hover) and (pointer: fine) {
   .gmc-redesign :is(.elementor-location-archive .elementor-post, .e-loop-item .elementor-element-e08782f) {
     transition: translate var(--gmc-press-duration) var(--gmc-ease), border-color var(--gmc-press-duration) ease;
@@ -1251,12 +1325,29 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-redesign .gmc-inner-page .e-n-accordion-item-title {
   min-height: 48px;
   padding: 12px clamp(12px, 2vw, 23px);
+  border: 0;
   color: var(--gmc-ink);
 }
 .gmc-redesign .gmc-inner-page .e-n-accordion-item[open] > .e-n-accordion-item-title { color: var(--gmc-action); }
 .gmc-redesign .gmc-inner-page .e-n-accordion-item > [role="region"] { background: var(--gmc-white); }
-.gmc-redesign.page-id-50 .elementor-element-3b1ee1e { --content-width: 930px; padding-bottom: var(--gmc-section-space); }
-.gmc-redesign.page-id-50 .elementor-element-22fd833 .elementor-heading-title { text-align: start; }
+.gmc-redesign.page-id-50 .gmc-inner-page .gmc-title-band.gmc-title-band {
+  padding-block: clamp(32px, 5vw, 72px) 0;
+  border-block-end: 0;
+  background: var(--gmc-paper) !important;
+}
+.gmc-redesign.page-id-50 .gmc-inner-page .gmc-title-band > .e-con-inner { padding-block: 0; }
+.gmc-redesign.page-id-50 .gmc-inner-page .elementor-element-3b1ee1e {
+  --content-width: var(--gmc-width);
+  padding-block: 16px clamp(36px, 5vw, 72px);
+  background: var(--gmc-paper) !important;
+}
+.gmc-redesign.page-id-50 .elementor-element-3b1ee1e > .e-con-inner { gap: 20px; }
+.gmc-redesign.page-id-50 .elementor-element-22fd833 .elementor-heading-title {
+  margin: 0;
+  color: var(--gmc-muted);
+  font: 500 clamp(1.05rem, 1.65vw, 1.4rem)/1.4 var(--gmc-text);
+  text-align: start;
+}
 .gmc-redesign .gmc-consultation-form {
   width: 100%;
   padding: clamp(16px, 3.1vw, 39px);
@@ -1301,9 +1392,13 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-redesign .elementor-location-footer .elementor-element-c4300be > .e-con-inner {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 9px;
+  align-items: stretch;
+  gap: 12px;
 }
 .gmc-redesign .elementor-location-footer .elementor-element-c4300be .elementor-widget-image-box {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
   width: 100%;
   min-width: 0;
   padding: clamp(8px, 1.5vw, 15px);
@@ -1356,6 +1451,21 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   color: var(--gmc-ink);
   text-align: start;
 }
+.gmc-redesign .elementor-location-footer .elementor-element-97cb082 .elementor-social-icons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gmc-redesign .elementor-location-footer .elementor-element-97cb082 a.elementor-social-icon {
+  --icon-size: 18px;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--gmc-muted) 50%, var(--gmc-paper));
+  border-radius: 8px;
+  background-color: var(--gmc-white);
+}
 .gmc-redesign .elementor-location-footer .elementor-element-e7f867c iframe {
   height: clamp(135px, 19vw, 238px);
   border: 1px solid var(--gmc-line);
@@ -1373,6 +1483,7 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 }
 @media (hover: hover) and (pointer: fine) {
   .gmc-redesign .elementor-location-footer .gmc-footer-cta:hover { color: var(--gmc-active); background: var(--gmc-soft-green); }
+  .gmc-redesign .elementor-location-footer .elementor-element-97cb082 a.elementor-social-icon:hover { background-color: var(--gmc-surface); }
 }
 @media (max-width: 1050px) {
   .gmc-redesign.page-id-1269 .jet-color-image-list-wrapper > fieldset { grid-template-columns: repeat(5, minmax(0, 1fr)); }

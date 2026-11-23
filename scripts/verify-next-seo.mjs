@@ -53,6 +53,9 @@ for (const [path, file] of Object.entries(pages)) {
       errors.push({ path, difference: selector });
     }
   }
+  if ($source('head link[rel="canonical"]').length && $rendered('body link[rel="canonical"]').length) {
+    errors.push({ path, difference: 'Duplicate canonical in the document body' });
+  }
 }
 
 const total = Object.keys(pages).length;

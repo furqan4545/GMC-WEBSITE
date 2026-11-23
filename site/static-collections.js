@@ -43,17 +43,76 @@
     return image;
   }
 
+  const caseTitles = new Map();
+
+  function imageSource(image) {
+    return image?.dataset.lazySrc || image?.dataset.src || image?.getAttribute('src');
+  }
+
+  function eagerPhoto(image) {
+    if (!image) return;
+    image.loading = 'eager';
+    const source = imageSource(image);
+    if (source && source !== image.getAttribute('src')) image.src = source;
+    const sources = image.dataset.lazySrcset || image.dataset.srcset;
+    if (sources) image.srcset = sources;
+    delete image.dataset.lazySrc;
+    delete image.dataset.src;
+    delete image.dataset.lazySrcset;
+    delete image.dataset.srcset;
+  }
+
+  function photoPath(value) {
+    if (!value) return null;
+    const path = new URL(value, location.href).pathname;
+    return path.startsWith('/wp-content/uploads/') ? path : null;
+  }
+
+  function consolidateGallery(entries) {
+    const featured = document.querySelector('#list-1');
+    const featuredSection = featured?.closest('.elementor-element-b551a02');
+    const resultsSection = gallery.closest('.e-parent');
+    if (!featuredSection || !resultsSection) return;
+
+    const available = new Set(entries.map(entry => photoPath(entry.image)));
+    const initialPhotos = new Map([...gallery.querySelectorAll(':scope > [data-post-id]')].map(card => [
+      card.dataset.postId,
+      photoPath(imageSource(card.querySelector('img'))),
+    ]));
+    const cards = [...featured.querySelectorAll('.jet-listing-grid__item[data-post-id]')];
+    const featuredWrap = featuredSection.querySelector(':scope > .e-con-inner');
+    let covered = cards.length > 0 && featuredWrap?.children.length === 1;
+    for (const card of cards) {
+      const paths = [...card.querySelectorAll('img')].map(image => photoPath(imageSource(image))).filter(Boolean);
+      const original = initialPhotos.get(card.dataset.postId);
+      if (!paths.length && original) paths.push(original);
+      if (!paths.length || paths.some(path => !available.has(path)) || card.querySelector('a[href], audio, video, iframe')) covered = false;
+      const title = card.querySelector('.elementor-widget-text-editor')?.textContent.trim();
+      if (!title) continue;
+      for (const path of paths) caseTitles.set(path, title);
+    }
+    if (covered) featuredSection.remove();
+    else resultsSection.after(featuredSection);
+  }
+
   let photoDialog;
   function openPhoto(entry) {
     if (!photoDialog) {
       photoDialog = element('dialog', 'gmc-collection-photo');
-      photoDialog.setAttribute('aria-label', viewPhoto);
+      const header = element('div', 'gmc-collection-photo-header');
+      const title = element('h2', 'gmc-collection-photo-title');
       const dismiss = element('button', 'gmc-collection-dismiss', close);
       dismiss.type = 'button';
       dismiss.addEventListener('click', () => photoDialog.close());
-      photoDialog.append(dismiss, element('img'));
+      header.append(title, dismiss);
+      photoDialog.append(header, element('img'));
       document.body.append(photoDialog);
     }
+    const title = caseTitles.get(photoPath(entry.image));
+    const heading = photoDialog.querySelector('h2');
+    heading.textContent = title || '';
+    heading.hidden = !title;
+    photoDialog.setAttribute('aria-label', title || viewPhoto);
     const image = photoDialog.querySelector('img');
     image.alt = entry.alt;
     image.src = entry.image;
@@ -63,7 +122,8 @@
   function galleryCard(entry) {
     const card = element('button', 'gmc-collection-tile');
     card.type = 'button';
-    card.setAttribute('aria-label', entry.alt ? `${viewPhoto} ${entry.alt}` : viewPhoto);
+    const label = caseTitles.get(photoPath(entry.image)) || entry.alt;
+    card.setAttribute('aria-label', label ? `${viewPhoto} ${label}` : viewPhoto);
     const image = photo(entry.image, entry.alt);
     if (entry.width && entry.height) {
       image.width = entry.width;
@@ -110,6 +170,11 @@
   }
 
   async function initialize() {
+    if (gallery) {
+      for (const image of document.querySelectorAll('.jet-color-image-list__decorator img')) {
+        eagerPhoto(image);
+      }
+    }
     const data = await fetch(`/gmc-preview/collections/${gallery ? 'gallery' : language}.json`);
     if (!data.ok) return;
     let entries = await data.json();
@@ -124,7 +189,11 @@
     const pager = element('nav', 'gmc-collection-pages');
     pager.setAttribute('aria-label', pages);
     originalPager.replaceWith(pager);
-    if (gallery) gallery.classList.add('gmc-collection-gallery');
+    if (gallery) {
+      consolidateGallery(entries);
+      gallery.classList.add('gmc-collection-gallery');
+      document.body.classList.add('gmc-gallery-ready');
+    }
     grid.tabIndex = -1;
 
     function navigate(page, selected, focusGrid) {
@@ -163,7 +232,15 @@
       const start = page === 1 ? 0 : firstStep + (page - 2) * step;
       const end = start + (page === 1 ? firstStep : step);
       const cards = filtered.slice(start, end).map(gallery ? galleryCard : articleCard);
-      grid.replaceChildren(...(cards.length ? cards : [element('p', 'gmc-collection-empty', noPhotos)]));
+      if (archive && !gallery) {
+        for (const card of cards.slice(0, 3)) eagerPhoto(card.querySelector('img'));
+      }
+      if (cards.length) grid.replaceChildren(...cards);
+      else {
+        const message = element('p', 'gmc-collection-empty', noPhotos);
+        message.setAttribute('role', 'status');
+        grid.replaceChildren(message);
+      }
 
       pager.replaceChildren();
       pager.hidden = lastPage <= 1;

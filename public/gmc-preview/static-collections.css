@@ -24,12 +24,40 @@
   color: white;
 }
 
+.gmc-gallery-ready.page-id-1269 .elementor-element-e57865c {
+  padding-block: 32px 24px;
+}
+
+.gmc-gallery-ready.page-id-1269 .elementor-element-e57865c > .e-con-inner {
+  row-gap: 24px;
+}
+
+.gmc-gallery-ready.page-id-1269 .elementor-element-8d23d69 {
+  padding-block: 24px 32px;
+}
+
+.gmc-gallery-ready.page-id-1269 .jet-color-image-list__item,
+.gmc-gallery-ready.page-id-1269 .jet-color-image-list__button {
+  min-width: 0;
+  height: 100%;
+}
+
+.gmc-gallery-ready.page-id-1269 .jet-color-image-list__label { white-space: normal; }
+
+.gmc-gallery-ready .gmc-collection-pages a[aria-current] {
+  box-shadow: inset 0 0 0 1px var(--gmc-action);
+  background: var(--gmc-soft-green);
+  color: var(--gmc-action);
+}
+
 #list-2 .gmc-collection-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
-  gap: clamp(10px, 2vw, 24px);
+  gap: 24px;
+  width: 100%;
   margin: 0;
+  scroll-margin-top: 96px;
 }
 
 .gmc-collection-gallery .gmc-collection-tile {
@@ -56,7 +84,11 @@
   outline-offset: 3px;
 }
 
-.gmc-collection-empty { grid-column: 1 / -1; }
+.gmc-collection-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--gmc-muted);
+}
 
 .gmc-collection-photo {
   width: min(960px, calc(100vw - 24px));
@@ -70,19 +102,40 @@
 
 .gmc-collection-photo::backdrop { background: rgb(0 0 0 / 70%); }
 
+.gmc-collection-photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 8px;
+}
+
+.gmc-collection-photo .gmc-collection-photo-title {
+  margin: 0;
+  color: var(--gmc-ink);
+  font: 500 1rem/1.4 var(--gmc-text);
+}
+
 .gmc-collection-photo img {
   display: block;
   width: 100%;
-  max-height: calc(100dvh - 90px);
+  max-height: calc(100dvh - 112px);
   object-fit: contain;
 }
 
 .gmc-collection-dismiss {
   display: block;
+  flex-shrink: 0;
+  min-width: 44px;
   min-height: 44px;
-  margin: 0 0 4px auto;
+  margin-inline-start: auto;
 }
 
 @media (max-width: 700px) {
-  #list-2 .gmc-collection-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gmc-gallery-ready.page-id-1269 .elementor-element-e57865c { padding-block-start: 24px; }
+
+  #list-2 .gmc-collection-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 }
