@@ -1,0 +1,88 @@
+.gmc-collection-pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto;
+}
+
+.gmc-collection-pages[hidden] { display: none; }
+
+.gmc-collection-pages a,
+.gmc-collection-ellipsis {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--gmc-action, #17483b);
+}
+
+.gmc-collection-pages a[aria-current] {
+  background: var(--gmc-action, #17483b);
+  color: white;
+}
+
+#list-2 .gmc-collection-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(10px, 2vw, 24px);
+  margin: 0;
+}
+
+.gmc-collection-gallery .gmc-collection-tile {
+  display: block;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.gmc-collection-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.gmc-collection-pages a:focus-visible,
+.gmc-collection-tile:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.gmc-collection-empty { grid-column: 1 / -1; }
+
+.gmc-collection-photo {
+  width: min(960px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  border: 0;
+  border-radius: 12px;
+  padding: 12px;
+  background: #faf7f2;
+}
+
+.gmc-collection-photo::backdrop { background: rgb(0 0 0 / 70%); }
+
+.gmc-collection-photo img {
+  display: block;
+  width: 100%;
+  max-height: calc(100dvh - 90px);
+  object-fit: contain;
+}
+
+.gmc-collection-dismiss {
+  display: block;
+  min-height: 44px;
+  margin: 0 0 4px auto;
+}
+
+@media (max-width: 700px) {
+  #list-2 .gmc-collection-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

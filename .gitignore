@@ -1,0 +1,10 @@
+node_modules/
+.migration/
+.vercel/
+.taste-skill/
+artifacts/
+dist/
+.next/
+.snapshot-*/
+.DS_Store
+.env*

@@ -1,0 +1,33 @@
+{
+  "name": "gangnam-medical-website",
+  "version": "1.0.0",
+  "description": "Gangnam Medical Concierge website rebuilt in Next.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "node --watch scripts/preview.mjs",
+    "prepare:snapshot": "node scripts/prepare-snapshot.mjs",
+    "crawl": "node scripts/crawl.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "verify:build-seo": "node scripts/verify-next-seo.mjs",
+    "verify:browser": "node scripts/verify-browser.mjs",
+    "copy": "node scripts/copy.mjs",
+    "verify:media": "node scripts/verify-media.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "playwright": "^1.65.1"
+  },
+  "private": true,
+  "dependencies": {
+    "html-react-parser": "6.1.10",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}
