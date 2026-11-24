@@ -1,0 +1,665 @@
+{
+  "tabs": {
+    "e-n-tab-title-481231521": [
+      "Tentang GMC"
+    ],
+    "e-n-tab-title-481231522": [
+      "Tubuh"
+    ],
+    "e-n-tab-title-481231523": [
+      "Payudara"
+    ],
+    "e-n-tab-title-481231524": [
+      "Dagu"
+    ],
+    "e-n-tab-title-481231525": [
+      "Mata"
+    ],
+    "e-n-tab-title-481231526": [
+      "Pengencangan Wajah"
+    ],
+    "e-n-tab-title-481231527": [
+      "Rahang"
+    ],
+    "e-n-tab-title-481231528": [
+      "Operasi Hidung"
+    ],
+    "e-n-tab-title-481231529": [
+      "Kulit / Dermatologi"
+    ]
+  },
+  "headings": {
+    "a06ba35": [
+      "Tentang GMC"
+    ],
+    "675e3de": [
+      "Pembentukan Kontur Tubuh"
+    ],
+    "a565a51": [
+      "Sedot Lemak"
+    ],
+    "a25def3": [
+      "Operasi Payudara"
+    ],
+    "91ee5eb": [
+      "Operasi Pengencangan Payudara"
+    ],
+    "bfb6aa5": [
+      "Operasi Pengurangan Payudara"
+    ],
+    "163490a": [
+      "Operasi Revisi Payudara"
+    ],
+    "26f5939": [
+      "Operasi Puting dan Areola"
+    ],
+    "2ff1a07": [
+      "Operasi Dagu"
+    ],
+    "e6b061c": [
+      "Operasi Kelopak Mata"
+    ],
+    "67fd834": [
+      "Cantoplasty"
+    ],
+    "691998d": [
+      "Operasi Kelopak Mata Ganda"
+    ],
+    "de3b9ad": [
+      "Bedah Revisi Kelopak Mata"
+    ],
+    "28c3a39": [
+      "Pengangkatan Alis"
+    ],
+    "7d8bcb1": [
+      "Extended Deep Plane Facelift dan SMAS Facelift"
+    ],
+    "e8ab975": [
+      "Mini Facelift"
+    ],
+    "6deaace": [
+      "Operasi Dua Rahang"
+    ],
+    "e914273": [
+      "Operasi Hidung"
+    ],
+    "4483a7c": [
+      "Operasi Revisi Hidung"
+    ],
+    "f2995ba": [
+      "Perawatan Lifting & Pengencangan"
+    ],
+    "6ac0803": [
+      "Perawatan Kulit / Dermatologi"
+    ],
+    "3b34a46": [
+      "Skin Booster"
+    ]
+  },
+  "questions": {
+    "e-n-accordion-item-1810": [
+      "Mengapa memilih GMC?"
+    ],
+    "e-n-accordion-item-1811": [
+      "Apakah layanan Anda membuat biaya saya lebih mahal?"
+    ],
+    "e-n-accordion-item-1812": [
+      "Mengapa Anda memberikan layanan secara gratis?"
+    ],
+    "e-n-accordion-item-1813": [
+      "Mengapa klinik mau bekerja sama dengan Anda jika mereka harus membayar Anda?"
+    ],
+    "e-n-accordion-item-1814": [
+      "Apakah Anda memiliki izin resmi?"
+    ],
+    "e-n-accordion-item-1815": [
+      "Apakah saya perlu membayar uang muka?"
+    ],
+    "e-n-accordion-item-1816": [
+      "Bagaimana jika timbul masalah setelah prosedur dan saya sudah meninggalkan Korea?"
+    ],
+    "e-n-accordion-item-1817": [
+      "Bagaimana Anda memilih rumah sakit dan klinik mitra?"
+    ],
+    "e-n-accordion-item-1090": [
+      "Apa perbedaan Brazilian Butt Lift dan implan bokong?"
+    ],
+    "e-n-accordion-item-1091": [
+      "Berapa lama pemulihan setelah operasi hip dip?"
+    ],
+    "e-n-accordion-item-1092": [
+      "Apakah hasil pembentukan kontur tubuh permanen?"
+    ],
+    "e-n-accordion-item-1093": [
+      "Siapa yang cocok menjalani pembentukan kontur tubuh?"
+    ],
+    "e-n-accordion-item-8560": [
+      "Berapa lama proses pemulihannya?"
+    ],
+    "e-n-accordion-item-8561": [
+      "Bagaimana saya tahu apakah saya cocok menjalani sedot lemak?"
+    ],
+    "e-n-accordion-item-8562": [
+      "Apakah sedot lemak membantu menurunkan berat badan?"
+    ],
+    "e-n-accordion-item-1680": [
+      "Bagaimana saya memilih antara pembesaran, pengecilan, dan pengencangan payudara?"
+    ],
+    "e-n-accordion-item-1681": [
+      "Bisakah operasi payudara digabung dengan prosedur lain?"
+    ],
+    "e-n-accordion-item-1682": [
+      "Berapa lama masa pemulihan setelah operasi payudara?"
+    ],
+    "e-n-accordion-item-1683": [
+      "Jenis implan apa yang digunakan untuk pembesaran payudara?"
+    ],
+    "e-n-accordion-item-1200": [
+      "Apakah saya masih bisa menyusui setelah pengencangan payudara?"
+    ],
+    "e-n-accordion-item-1201": [
+      "Apakah bekas luka setelah operasi pengencangan payudara akan terlihat jelas?"
+    ],
+    "e-n-accordion-item-1202": [
+      "Apa perbedaan pengencangan dan pembesaran payudara?"
+    ],
+    "e-n-accordion-item-7450": [
+      "Bisakah operasi pengecilan payudara digabung dengan prosedur lain?"
+    ],
+    "e-n-accordion-item-7451": [
+      "Apakah bekas luka setelah operasi pengecilan payudara akan terlihat jelas?"
+    ],
+    "e-n-accordion-item-7452": [
+      "Seperti apa pemulihan setelah operasi pengecilan payudara?"
+    ],
+    "e-n-accordion-item-7453": [
+      "Bagaimana saya tahu apakah saya cocok menjalani operasi pengecilan payudara?"
+    ],
+    "e-n-accordion-item-2360": [
+      "Berapa lama masa pemulihan setelah operasi revisi payudara?"
+    ],
+    "e-n-accordion-item-2361": [
+      "Apakah implan saya harus diganti saat operasi revisi payudara?"
+    ],
+    "e-n-accordion-item-2362": [
+      "Apa itu kontraktur kapsular?"
+    ],
+    "e-n-accordion-item-2363": [
+      "Kapan sebaiknya saya mempertimbangkan operasi revisi payudara?"
+    ],
+    "e-n-accordion-item-2480": [
+      "Apakah bekas luka setelah operasi puting atau areola akan terlihat jelas?"
+    ],
+    "e-n-accordion-item-2481": [
+      "Seperti apa pemulihan setelah operasi puting dan areola?"
+    ],
+    "e-n-accordion-item-2482": [
+      "Bagaimana saya tahu apakah saya memerlukan operasi puting atau areola?"
+    ],
+    "e-n-accordion-item-2483": [
+      "Bisakah operasi puting atau areola digabung dengan prosedur payudara lain?"
+    ],
+    "e-n-accordion-item-2530": [
+      "Apa risiko atau komplikasi genioplasti (operasi dagu)?"
+    ],
+    "e-n-accordion-item-2531": [
+      "Seperti apa pemulihan setelah genioplasti (operasi dagu)?"
+    ],
+    "e-n-accordion-item-2532": [
+      "Berapa lama hasil genioplasti (operasi dagu) bertahan?"
+    ],
+    "e-n-accordion-item-2533": [
+      "Apakah bekas luka setelah genioplasti (operasi dagu) akan terlihat?"
+    ],
+    "e-n-accordion-item-1990": [
+      "Apakah bekas luka setelah blefaroplasti akan terlihat?"
+    ],
+    "e-n-accordion-item-1991": [
+      "Apa perbedaan blefaroplasti kelopak mata atas dan bawah?"
+    ],
+    "e-n-accordion-item-1992": [
+      "Berapa lama proses pemulihannya?"
+    ],
+    "e-n-accordion-item-1993": [
+      "Berapa biaya blefaroplasti di Korea?"
+    ],
+    "e-n-accordion-item-1690": [
+      "Apa perbedaan kantoplasti lateral dan epikantoplasti?"
+    ],
+    "e-n-accordion-item-1691": [
+      "Apakah hasil kantoplasti permanen?"
+    ],
+    "e-n-accordion-item-1692": [
+      "Berapa lama masa pemulihan setelah kantoplasti?"
+    ],
+    "e-n-accordion-item-1693": [
+      "Berapa biaya kantoplasti di Korea?"
+    ],
+    "e-n-accordion-item-6720": [
+      "Apakah saya cocok menjalani operasi kelopak mata ganda?"
+    ],
+    "e-n-accordion-item-6721": [
+      "Berapa lama pemulihan?"
+    ],
+    "e-n-accordion-item-6722": [
+      "Apa risiko operasi kelopak mata ganda?"
+    ],
+    "e-n-accordion-item-6723": [
+      "Mana yang lebih baik, operasi kelopak mata ganda dengan atau tanpa sayatan?"
+    ],
+    "e-n-accordion-item-2370": [
+      "Apakah saya cocok menjalani operasi revisi kelopak mata?"
+    ],
+    "e-n-accordion-item-2371": [
+      "Apa risiko operasi revisi kelopak mata?"
+    ],
+    "e-n-accordion-item-2372": [
+      "Seperti apa pemulihannya?"
+    ],
+    "e-n-accordion-item-2373": [
+      "Apa perbedaan operasi revisi kelopak mata dengan operasi pertama?"
+    ],
+    "e-n-accordion-item-1790": [
+      "Apakah ada risiko dalam operasi pengangkatan alis?"
+    ],
+    "e-n-accordion-item-1791": [
+      "Bagaimana saya tahu apakah saya memerlukan pengangkatan alis atau operasi kelopak mata?"
+    ],
+    "e-n-accordion-item-1792": [
+      "Apakah operasi pengangkatan alis terasa sakit?"
+    ],
+    "e-n-accordion-item-1793": [
+      "Berapa lama hasil pengangkatan alis bertahan?"
+    ],
+    "e-n-accordion-item-2420": [
+      "Apakah saya memerlukan SMAS facelift atau Extended Deep Plane Facelift?"
+    ],
+    "e-n-accordion-item-2421": [
+      "Apa perbedaan Extended Deep Plane Facelift dengan facelift konvensional?"
+    ],
+    "e-n-accordion-item-2422": [
+      "Siapa yang cocok menjalani prosedur facelift ini?"
+    ],
+    "e-n-accordion-item-2423": [
+      "Apakah bekas luka akan terlihat jelas?"
+    ],
+    "e-n-accordion-item-2424": [
+      "Berapa lama proses pemulihannya?"
+    ],
+    "e-n-accordion-item-1360": [
+      "Berapa lama hasil mini facelift bertahan?"
+    ],
+    "e-n-accordion-item-1361": [
+      "Apa perbedaan mini facelift dengan facelift konvensional?"
+    ],
+    "e-n-accordion-item-1362": [
+      "Siapa yang cocok menjalani mini facelift?"
+    ],
+    "e-n-accordion-item-1363": [
+      "Apakah mini facelift terasa sakit?"
+    ],
+    "e-n-accordion-item-4920": [
+      "Apakah saya perlu memakai kawat gigi sebelum dan sesudah operasi dua rahang?"
+    ],
+    "e-n-accordion-item-4921": [
+      "Apakah operasi dua rahang terasa sakit?"
+    ],
+    "e-n-accordion-item-4922": [
+      "Bagaimana saya tahu apakah saya memerlukan operasi dua rahang?"
+    ],
+    "e-n-accordion-item-4923": [
+      "Seperti apa pemulihan setelah operasi dua rahang?"
+    ],
+    "e-n-accordion-item-2130": [
+      "Berapa lama pemulihan setelah operasi hidung?"
+    ],
+    "e-n-accordion-item-2131": [
+      "Apakah operasi hidung di Korea mahal?"
+    ],
+    "e-n-accordion-item-2132": [
+      "Apa risiko operasi hidung?"
+    ],
+    "e-n-accordion-item-2133": [
+      "Apakah operasi hidung dapat memperbaiki gangguan pernapasan?"
+    ],
+    "e-n-accordion-item-1800": [
+      "Berapa lama saya harus menunggu sebelum mempertimbangkan operasi revisi hidung?"
+    ],
+    "e-n-accordion-item-1801": [
+      "Apakah operasi revisi hidung lebih mahal daripada operasi pertama?"
+    ],
+    "e-n-accordion-item-1802": [
+      "Apa risiko operasi revisi hidung?"
+    ],
+    "e-n-accordion-item-1803": [
+      "Apakah pernapasan saya akan membaik setelah operasi revisi hidung?"
+    ],
+    "e-n-accordion-item-8750": [
+      "Bagaimana saya memilih antara Ulthera dan tanam benang?"
+    ],
+    "e-n-accordion-item-8751": [
+      "Berapa lama hasil perawatan ini bertahan?"
+    ],
+    "e-n-accordion-item-8752": [
+      "Apakah perawatan ini memerlukan waktu pemulihan?"
+    ],
+    "e-n-accordion-item-1100": [
+      "Apa perawatan terbaik untuk bekas jerawat?"
+    ],
+    "e-n-accordion-item-1101": [
+      "Berapa kali perawatan diperlukan untuk mengatasi pigmentasi?"
+    ],
+    "e-n-accordion-item-1102": [
+      "Apakah perawatan laser aman untuk semua jenis kulit?"
+    ],
+    "e-n-accordion-item-1103": [
+      "Berapa lama sampai hasil perawatan bekas luka terlihat?"
+    ],
+    "e-n-accordion-item-1290": [
+      "Berapa lama efek skin booster bertahan?"
+    ],
+    "e-n-accordion-item-1291": [
+      "Apakah skin booster aman untuk kulit sensitif?"
+    ],
+    "e-n-accordion-item-1292": [
+      "Berapa kali perawatan diperlukan untuk hasil optimal?"
+    ],
+    "e-n-accordion-item-1293": [
+      "Apakah saya membutuhkan waktu pemulihan setelah perawatan skin booster?"
+    ]
+  },
+  "answers": {
+    "e-n-accordion-item-1810": [
+      "Mempermudah perjalanan Anda",
+      "Serahkan perencanaannya kepada kami agar Anda dapat menjalani prosesnya dengan tenang. Dari perjalanan hingga prosedur, kami menangani setiap detail agar semuanya berjalan lancar dan tanpa repot.",
+      "Tanpa biaya tambahan bagi Anda",
+      "Layanan kami diberikan tanpa biaya tambahan. Dengan memilih GMC, Anda dapat menghemat waktu dan uang.",
+      "Fasilitas medis terkemuka di Korea",
+      "Kami menghubungkan Anda dengan klinik-klinik terkemuka di Gangnam agar Anda mendapatkan perawatan dengan standar tertinggi. Tim kami membantu mencarikan dokter atau dokter bedah yang tepat untuk Anda dan mendampingi Anda agar perjalanan medis Anda aman dan nyaman."
+    ],
+    "e-n-accordion-item-1811": [
+      "Mungkin terdengar terlalu bagus untuk menjadi kenyataan, tetapi layanan GMC memang tanpa biaya tambahan bagi Anda. Berbeda dengan banyak agen yang menaikkan penawaran demi komisi yang lebih besar, kami menjamin Anda membayar jumlah yang sama atau lebih rendah dibanding menghubungi klinik secara langsung.",
+      "Dengan",
+      "Jaminan Harga Terbaik",
+      ", kami memastikan biaya pemesanan melalui GMC selalu lebih rendah. Berkat kemitraan eksklusif kami, kami sering mendapatkan harga diskon dan penawaran promosi tambahan, sehingga Anda memperoleh harga terbaik dan dukungan dari tim berpengalaman di setiap langkah."
+    ],
+    "e-n-accordion-item-1812": [
+      "Layanan GMC sepenuhnya gratis bagi pasien karena kami menerima imbalan jasa dari klinik mitra. Anda tidak perlu membayar lebih saat memilih GMC. Dengan",
+      "Jaminan Harga Terbaik",
+      ", kami memastikan pemesanan melalui kami",
+      "selalu",
+      "lebih terjangkau. Berkat kemitraan eksklusif kami, kami mendapatkan harga diskon yang lebih rendah daripada jika Anda menghubungi rumah sakit secara langsung.",
+      "Kami membantu Anda menghemat uang, menekan biaya, dan menjalani prosesnya dengan tenang dari awal hingga akhir."
+    ],
+    "e-n-accordion-item-1813": [
+      "Jawabannya sederhana: kami memudahkan pekerjaan mereka.",
+      "Dengan mengelola pemasaran, komunikasi dengan pasien, dan persiapan sebelum prosedur, kami membantu klinik menghemat waktu dan sumber daya. Layanan gratis bagi pasien, pendampingan yang disesuaikan, dan koordinasi yang lancar meringankan beban kerja serta menekan biaya klinik. Dengan demikian, mereka dapat berfokus pada keahlian mereka, yaitu memberikan perawatan medis yang berkualitas.",
+      "Kemitraan dengan GMC menguntungkan klinik dan pasien."
+    ],
+    "e-n-accordion-item-1814": [
+      "Ya. Gangnam Medical Concierge adalah agen berizin pemerintah yang diakreditasi oleh pemerintah Korea untuk layanan wisata medis. Anda dapat memeriksa izin usaha kami di Medical Korea dengan nomor registrasi A-2025-01-02-06129."
+    ],
+    "e-n-accordion-item-1815": [
+      "Ya, uang muka diperlukan untuk mengamankan jadwal operasi Anda. Kebanyakan klinik biasanya meminta uang muka sebesar 10% dari total biaya operasi. Jumlah ini akan dikurangkan dari total biaya operasi saat Anda tiba."
+    ],
+    "e-n-accordion-item-1816": [
+      "Kami tetap mendampingi Anda setelah Anda meninggalkan Korea. Jika ada keluhan atau komplikasi, hubungi kami. GMC akan mendampingi dan mewakili Anda saat berkomunikasi dengan klinik agar masalah segera ditangani secara efektif. Komitmen kami untuk mendampingi Anda berlanjut setelah Anda pulang."
+    ],
+    "e-n-accordion-item-1817": [
+      "GMC menyeleksi klinik dan rumah sakit yang mengutamakan keselamatan pasien dan secara konsisten memberikan hasil yang sangat baik. Kami juga menyeleksi dokternya. Tim kami memastikan setiap pasien ditangani oleh dokter bedah terampil dan berpengalaman yang keahliannya telah kami periksa langsung.",
+      "Kami mengambil langkah agar Anda tidak ditangani oleh dokter yang kurang berpengalaman, serta mengutamakan kesejahteraan dan kepuasan Anda di setiap langkah.",
+      "Pelajari lebih lanjut tentang proses seleksi ketat kami",
+      "di sini",
+      "."
+    ],
+    "e-n-accordion-item-1090": [
+      "Brazilian Butt Lift (BBL) menggunakan lemak tubuh Anda sendiri untuk memperbaiki bentuk bokong, sedangkan implan bokong menggunakan silikon untuk menambah volume. Hasil BBL terasa lebih alami, tetapi memerlukan lemak donor yang cukup. Implan cocok untuk orang yang tidak memiliki cukup lemak."
+    ],
+    "e-n-accordion-item-1091": [
+      "Sebagian besar pasien dapat kembali beraktivitas seperti biasa dalam 2–3 minggu. Pemulihan penuh, termasuk berkurangnya pembengkakan dan tercapainya hasil optimal, dapat memakan waktu hingga 3 bulan."
+    ],
+    "e-n-accordion-item-1092": [
+      "Ya, hasilnya umumnya permanen, selama pasien menjaga berat badan tetap stabil dan mengikuti petunjuk perawatan pascaoperasi."
+    ],
+    "e-n-accordion-item-1093": [
+      "Kandidat yang ideal adalah orang dengan berat badan mendekati target, memiliki area tertentu yang ingin ditangani, dan secara umum dalam kondisi kesehatan yang baik."
+    ],
+    "e-n-accordion-item-8560": [
+      "Sebagian besar pasien dapat kembali melakukan aktivitas ringan dalam beberapa hari. Pemulihan penuh, termasuk berkurangnya pembengkakan, biasanya memerlukan 2–3 minggu."
+    ],
+    "e-n-accordion-item-8561": [
+      "Kandidat yang ideal adalah orang dengan berat badan mendekati target, tetapi memiliki timbunan lemak di area tertentu yang tidak berkurang dengan pola makan atau olahraga."
+    ],
+    "e-n-accordion-item-8562": [
+      "Sedot lemak bertujuan membentuk ulang kontur area tubuh tertentu. Prosedur ini tidak ditujukan untuk menurunkan berat badan."
+    ],
+    "e-n-accordion-item-1680": [
+      "Dokter bedah akan membantu menentukan prosedur yang paling sesuai berdasarkan bentuk tubuh, tujuan estetika, dan kondisi kesehatan Anda secara keseluruhan."
+    ],
+    "e-n-accordion-item-1681": [
+      "Ya, operasi payudara sering dikombinasikan dengan prosedur lain, seperti pengencangan perut atau sedot lemak, untuk mendapatkan hasil pembentukan kontur tubuh yang lebih menyeluruh."
+    ],
+    "e-n-accordion-item-1682": [
+      "Pemulihan awal berlangsung sekitar 1–2 minggu. Pembengkakan dan memar umum terjadi pada masa ini. Pemulihan penuh, saat Anda dapat kembali menjalani semua aktivitas, biasanya memerlukan 4–6 minggu."
+    ],
+    "e-n-accordion-item-1683": [
+      "Jenis yang paling umum adalah implan silikon dan implan berisi larutan garam. Implan silikon terasa alami dan banyak diminati, sedangkan implan berisi larutan garam steril terasa lebih padat."
+    ],
+    "e-n-accordion-item-1200": [
+      "Dalam banyak kasus, pasien masih bisa menyusui setelah pengencangan payudara. Hal ini bergantung pada kondisi masing-masing pasien dan cakupan operasi. Penting untuk membahasnya dengan dokter bedah saat konsultasi."
+    ],
+    "e-n-accordion-item-1201": [
+      "Teknik pembedahan modern membantu meminimalkan bekas luka. Seiring waktu, bekas luka akan memudar dan menjadi kurang terlihat."
+    ],
+    "e-n-accordion-item-1202": [
+      "Operasi pengencangan payudara berfokus pada pengangkatan dan pembentukan ulang payudara yang kendur. Pembesaran payudara menambah volume menggunakan implan. Banyak pasien menggabungkan kedua prosedur ini untuk mendapatkan bentuk dan ukuran yang diinginkan."
+    ],
+    "e-n-accordion-item-7450": [
+      "Ya, banyak pasien memilih menggabungkan operasi pengecilan payudara dengan prosedur lain, seperti pengencangan payudara atau sedot lemak, untuk mendapatkan hasil yang lebih menyeluruh."
+    ],
+    "e-n-accordion-item-7451": [
+      "Bekas luka tidak bisa dihindari sepenuhnya. Dokter bedah di Korea menggunakan teknik modern untuk meminimalkan bekas luka agar memudar seiring waktu. Sayatan biasanya dibuat di area yang tidak mencolok, seperti di lipatan bawah payudara."
+    ],
+    "e-n-accordion-item-7452": [
+      "Pemulihan awal berlangsung sekitar 2–3 minggu. Selama masa ini, Anda perlu menghindari aktivitas berat. Pemulihan penuh biasanya memerlukan 6–8 minggu, dan sebagian besar pasien dapat kembali beraktivitas seperti biasa dalam jangka waktu tersebut."
+    ],
+    "e-n-accordion-item-7453": [
+      "Anda mungkin cocok menjalani operasi pengecilan payudara jika ukuran payudara menimbulkan rasa tidak nyaman secara fisik, misalnya nyeri punggung, leher, atau bahu, atau jika Anda merasa kurang percaya diri karena ukuran tersebut."
+    ],
+    "e-n-accordion-item-2360": [
+      "Pemulihan awal berlangsung 1–2 minggu, sedangkan pemulihan penuh memerlukan sekitar 4–6 minggu."
+    ],
+    "e-n-accordion-item-2361": [
+      "Ini bergantung pada kondisi Anda. Sebagian pasien memilih mengganti implan dengan yang baru, sedangkan yang lain memilih melepasnya sama sekali."
+    ],
+    "e-n-accordion-item-2362": [
+      "Kontraktur kapsular adalah pengerasan jaringan parut di sekitar implan, yang dapat menyebabkan rasa tidak nyaman dan perubahan bentuk. Operasi revisi payudara dapat memperbaiki kondisi ini."
+    ],
+    "e-n-accordion-item-2363": [
+      "Pertimbangkan operasi revisi payudara jika Anda mengalami komplikasi seperti implan pecah atau kontraktur kapsular, atau jika Anda kurang puas dengan hasil operasi sebelumnya."
+    ],
+    "e-n-accordion-item-2480": [
+      "Bekas luka biasanya minimal dan memudar seiring waktu. Dokter bedah di Korea menggunakan teknik modern agar letak bekas luka tidak mencolok dan lukanya sembuh dengan baik."
+    ],
+    "e-n-accordion-item-2481": [
+      "Pemulihan umumnya cepat, dan sebagian besar pasien dapat kembali beraktivitas seperti biasa dalam 1–2 minggu. Pemulihan penuh memerlukan sekitar 4–6 minggu. Selama masa itu, Anda perlu menghindari aktivitas berat."
+    ],
+    "e-n-accordion-item-2482": [
+      "Anda mungkin cocok menjalani operasi puting atau areola jika kurang percaya diri dengan ukuran, bentuk, atau tampilannya, atau mengalami masalah fungsi seperti puting yang masuk ke dalam."
+    ],
+    "e-n-accordion-item-2483": [
+      "Ya, banyak pasien memilih menggabungkan operasi ini dengan prosedur lain, seperti pembesaran atau pengencangan payudara, untuk mendapatkan hasil yang lebih menyeluruh."
+    ],
+    "e-n-accordion-item-2530": [
+      "Genioplasti umumnya aman, tetapi memiliki risiko seperti infeksi, kerusakan saraf, atau perubahan sensasi. Pembengkakan dan memar umum terjadi, namun bersifat sementara. Berkonsultasi dengan dokter bedah berpengalaman membantu meminimalkan risiko ini."
+    ],
+    "e-n-accordion-item-2531": [
+      "Biasanya timbul pembengkakan dan memar yang mereda dalam beberapa minggu. Sebagian besar pasien kembali beraktivitas seperti biasa dalam satu minggu, meskipun penyembuhan penuh dan hasil akhir dapat memerlukan beberapa bulan."
+    ],
+    "e-n-accordion-item-2532": [
+      "Hasil genioplasti biasanya bertahan lama karena prosedur ini mengubah struktur tulang secara permanen. Dengan perawatan yang tepat, hasilnya dapat bertahan seumur hidup sehingga prosedur ini sepadan bagi banyak orang."
+    ],
+    "e-n-accordion-item-2533": [
+      "Pada sebagian besar kasus, sayatan genioplasti dibuat di dalam mulut sehingga tidak ada bekas luka yang terlihat dari luar. Jika diperlukan sayatan luar di bawah dagu, bekasnya biasanya minimal dan dapat memudar secara signifikan seiring waktu dengan perawatan yang tepat."
+    ],
+    "e-n-accordion-item-1990": [
+      "Bekas luka minimal dan biasanya tersembunyi di lipatan alami kelopak mata. Seiring waktu, bekasnya menjadi hampir tidak terlihat."
+    ],
+    "e-n-accordion-item-1991": [
+      "Blefaroplasti atas menangani kelopak mata atas yang kendur atau turun, sedangkan blefaroplasti bawah berfokus pada pengurangan bengkak dan kantong mata. Keduanya dapat dilakukan bersamaan untuk hasil peremajaan yang lebih menyeluruh."
+    ],
+    "e-n-accordion-item-1992": [
+      "Pemulihan awal setelah blefaroplasti berlangsung sekitar 1–2 minggu. Pembengkakan dan memar berangsur mereda. Pemulihan penuh dapat memerlukan hingga 3 bulan, seiring penyembuhan bekas luka dan terbentuknya hasil akhir."
+    ],
+    "e-n-accordion-item-1993": [
+      "Biayanya bergantung pada klinik, keahlian dokter bedah, dan apakah Anda menjalani blefaroplasti atas, bawah, atau kombinasi keduanya. Klinik di Korea umumnya menawarkan harga yang bersaing dengan hasil berkualitas tinggi."
+    ],
+    "e-n-accordion-item-1690": [
+      "Kantoplasti lateral menyasar sudut luar mata agar mata tampak lebih lebar dan memanjang. Epikantoplasti menyesuaikan sudut dalam mata agar mata tampak lebih terbuka dan muda."
+    ],
+    "e-n-accordion-item-1691": [
+      "Ya, hasil kantoplasti umumnya bertahan lama. Namun, seperti pada semua operasi, penuaan alami dapat memengaruhi hasilnya seiring waktu."
+    ],
+    "e-n-accordion-item-1692": [
+      "Pemulihan awal memerlukan sekitar 1–2 minggu. Selama itu, pembengkakan dan memar berangsur mereda. Pemulihan penuh dapat memerlukan hingga 2 bulan, sampai hasil akhirnya terlihat."
+    ],
+    "e-n-accordion-item-1693": [
+      "Biayanya bergantung pada klinik dan keahlian dokter bedah. Klinik di Korea umumnya menawarkan harga yang kompetitif dengan tetap mempertahankan standar perawatan yang tinggi."
+    ],
+    "e-n-accordion-item-6720": [
+      "Kandidat umumnya ingin memperbaiki tampilan kelopak mata, memiliki harapan yang realistis, dan dalam kondisi kesehatan yang baik. Penting untuk berkonsultasi dengan dokter bedah yang berkualifikasi."
+    ],
+    "e-n-accordion-item-6721": [
+      "Pemulihan awal berlangsung sekitar 1–2 minggu, seiring meredanya pembengkakan dan memar. Pemulihan penuh, termasuk memudarnya bekas luka, dapat memerlukan 1–3 bulan."
+    ],
+    "e-n-accordion-item-6722": [
+      "Risiko yang mungkin terjadi mencakup asimetri, bekas luka, atau tampilan yang tidak alami. Memilih dokter bedah yang terampil membantu meminimalkan risiko tersebut."
+    ],
+    "e-n-accordion-item-6723": [
+      "Metode terbaik bergantung pada anatomi mata dan hasil yang Anda inginkan. Operasi dengan sayatan memberikan hasil yang lebih permanen. Operasi tanpa sayatan lebih minim tindakan dan pemulihannya lebih cepat, tetapi hasilnya mungkin tidak bertahan selama metode dengan sayatan."
+    ],
+    "e-n-accordion-item-2370": [
+      "Kandidat adalah orang yang pernah menjalani operasi kelopak mata dan kurang puas dengan hasilnya karena masalah penampilan atau fungsi."
+    ],
+    "e-n-accordion-item-2371": [
+      "Seperti pada operasi lain, risikonya mencakup infeksi, perdarahan, dan bekas luka. Dokter bedah yang berpengalaman dapat membantu meminimalkan risiko tersebut."
+    ],
+    "e-n-accordion-item-2372": [
+      "Pemulihan awal berlangsung sekitar 1–2 minggu, dan hasil penuh terlihat dalam 3–6 bulan. Pasien dapat mengalami pembengkakan dan memar pada awal masa pemulihan."
+    ],
+    "e-n-accordion-item-2373": [
+      "Operasi revisi sering membutuhkan teknik yang lebih maju untuk menangani komplikasi, jaringan parut, atau masalah struktur yang tersisa dari operasi pertama."
+    ],
+    "e-n-accordion-item-1790": [
+      "Seperti prosedur operasi lainnya, ada kemungkinan risiko seperti infeksi, bekas luka, atau perubahan sensasi kulit. Risikonya dapat diminimalkan jika operasi dilakukan oleh dokter bedah terampil dan berpengalaman."
+    ],
+    "e-n-accordion-item-1791": [
+      "Konsultasi dengan dokter bedah dapat membantu menentukan apakah pengangkatan alis atau operasi kelopak mata lebih sesuai untuk keluhan Anda. Dalam beberapa kasus, kedua prosedur dianjurkan untuk mendapatkan hasil yang optimal."
+    ],
+    "e-n-accordion-item-1792": [
+      "Sebagian besar pasien hanya mengalami sedikit nyeri setelah operasi, yang dapat ditangani dengan obat pereda nyeri yang diresepkan. Rasa tidak nyaman biasanya mereda dalam beberapa hari."
+    ],
+    "e-n-accordion-item-1793": [
+      "Hasil pengangkatan alis dapat bertahan hingga 10 tahun atau lebih, bergantung pada faktor seperti kualitas kulit, gaya hidup, dan proses penuaan."
+    ],
+    "e-n-accordion-item-2420": [
+      "Pilihan antara SMAS facelift dan Extended Deep Plane Facelift bergantung pada tingkat penuaan wajah dan hasil yang diinginkan.",
+      "SMAS facelift cocok bagi orang yang ingin mengatasi kekenduran sedang dan mendapatkan hasil yang terlihat alami, dengan garis rahang dan leher yang lebih tegas.",
+      "Extended Deep Plane Facelift lebih sesuai untuk tanda penuaan wajah yang sudah lanjut. Prosedur ini meremajakan bagian tengah wajah, pipi, garis rahang, dan leher secara menyeluruh, sehingga hasilnya lebih nyata dan bertahan lebih lama.",
+      "Penting untuk berkonsultasi dengan dokter bedah plastik berkualifikasi guna menentukan teknik yang paling sesuai dengan kebutuhan Anda."
+    ],
+    "e-n-accordion-item-2421": [
+      "Extended Deep Plane Facelift mengatur ulang posisi lapisan wajah yang lebih dalam agar hasilnya lebih alami dan bertahan lebih lama, sedangkan facelift konvensional terutama mengencangkan kulit."
+    ],
+    "e-n-accordion-item-2422": [
+      "Kandidat yang ideal adalah orang dengan tanda penuaan wajah sedang hingga berat, termasuk kekenduran pada bagian tengah wajah, pipi bawah di sekitar garis rahang, dan leher."
+    ],
+    "e-n-accordion-item-2423": [
+      "Bekas luka minimal karena sayatan biasanya dibuat di lokasi yang tidak mencolok, seperti di belakang telinga atau di sepanjang garis rambut. Bekasnya akan memudar seiring waktu."
+    ],
+    "e-n-accordion-item-2424": [
+      "Pemulihan awal memerlukan 2–3 minggu, dengan pemulihan penuh biasanya dalam 2–3 bulan."
+    ],
+    "e-n-accordion-item-1360": [
+      "Hasil mini facelift dapat bertahan antara 5 dan 10 tahun, bergantung pada faktor seperti usia, jenis kulit, dan kebiasaan gaya hidup."
+    ],
+    "e-n-accordion-item-1361": [
+      "Mini facelift kurang invasif, dengan sayatan yang lebih kecil dan fokus pada wajah bagian bawah. Masa pemulihannya lebih singkat daripada facelift konvensional, yang menangani tanda penuaan wajah dengan cakupan lebih luas."
+    ],
+    "e-n-accordion-item-1362": [
+      "Kandidat yang ideal adalah orang berusia 40-an hingga 50-an yang mengalami tanda awal penuaan, seperti kekenduran ringan hingga sedang pada wajah bagian bawah dan garis rahang."
+    ],
+    "e-n-accordion-item-1363": [
+      "Prosedur ini biasanya dilakukan dengan anestesi lokal, sehingga rasa tidak nyaman saat operasi minimal. Nyeri setelah operasi umumnya ringan dan dapat ditangani dengan obat."
+    ],
+    "e-n-accordion-item-4920": [
+      "Dalam banyak kasus, perawatan ortodonti, seperti kawat gigi, diperlukan sebelum dan sesudah operasi untuk menyejajarkan gigi dan rahang dengan tepat."
+    ],
+    "e-n-accordion-item-4921": [
+      "Operasi dilakukan dengan anestesi umum, tetapi pasien mungkin merasa tidak nyaman selama masa pemulihan. Dokter bedah Anda akan memberikan metode dan obat untuk mengatasi nyeri."
+    ],
+    "e-n-accordion-item-4922": [
+      "Jika Anda mengalami masalah gigitan yang berat, ketidaksejajaran rahang, atau asimetri wajah yang mengganggu aktivitas sehari-hari, Anda mungkin cocok menjalani operasi dua rahang. Konsultasi menyeluruh dengan dokter spesialis diperlukan untuk menilai apakah prosedur ini sesuai bagi Anda."
+    ],
+    "e-n-accordion-item-4923": [
+      "Pemulihan awal memerlukan sekitar 3–4 minggu. Selama masa ini, pasien dapat mengalami pembengkakan, rasa tidak nyaman, dan pembatasan makanan. Pemulihan penuh dapat memerlukan 6–12 bulan, bergantung pada kondisi masing-masing pasien."
+    ],
+    "e-n-accordion-item-2130": [
+      "Pemulihan awal biasanya memerlukan 1–2 minggu, saat pembengkakan dan memar berangsur mereda. Pemulihan penuh dapat memerlukan 1–3 bulan hingga hasil akhir terlihat."
+    ],
+    "e-n-accordion-item-2131": [
+      "Biaya operasi hidung di Korea bersaing dibandingkan dengan negara lain. Biayanya bervariasi menurut kompleksitas operasi dan keahlian dokter bedah."
+    ],
+    "e-n-accordion-item-2132": [
+      "Seperti operasi lainnya, operasi hidung memiliki risiko seperti infeksi, perdarahan, dan bekas luka. Dokter bedah berpengalaman dan teknik modern di Korea membantu meminimalkan risiko tersebut."
+    ],
+    "e-n-accordion-item-2133": [
+      "Ya, operasi hidung dapat menangani masalah fungsi, seperti sekat hidung yang bengkok atau masalah struktur lain yang memengaruhi pernapasan."
+    ],
+    "e-n-accordion-item-1800": [
+      "Dianjurkan untuk menunggu setidaknya 6–12 bulan setelah operasi hidung pertama agar hidung pulih sepenuhnya dan kondisinya stabil sebelum menjalani operasi revisi."
+    ],
+    "e-n-accordion-item-1801": [
+      "Ya, operasi revisi hidung biasanya lebih mahal karena lebih kompleks, membutuhkan waktu lebih lama, dan memerlukan keahlian tambahan."
+    ],
+    "e-n-accordion-item-1802": [
+      "Risikonya mencakup infeksi, bekas luka, dan kesulitan mencapai hasil yang diinginkan akibat jaringan parut dan perubahan struktur hidung dari operasi pertama. Dokter bedah berpengalaman di Korea memiliki keahlian untuk meminimalkan risiko tersebut."
+    ],
+    "e-n-accordion-item-1803": [
+      "Jika gangguan pernapasan disebabkan oleh masalah struktur dari operasi pertama, operasi revisi dapat membantu memperbaiki masalah tersebut dan melancarkan aliran udara."
+    ],
+    "e-n-accordion-item-8750": [
+      "Ulthera cocok untuk pengencangan dan pengangkatan kulit secara menyeluruh tanpa perubahan yang langsung terlihat. Tanam benang memberi efek pengangkatan seketika dan cocok untuk area tertentu, seperti pipi atau garis rahang."
+    ],
+    "e-n-accordion-item-8751": [
+      "Hasilnya berbeda menurut jenis prosedur. Ulthera dan Shurink biasanya bertahan 12–18 bulan, sedangkan tanam benang dapat bertahan hingga 18 bulan. Hasil Thermage dan InMode dapat bertahan 1–2 tahun dengan perawatan pemeliharaan yang tepat."
+    ],
+    "e-n-accordion-item-8752": [
+      "Sebagian besar perawatan hanya memerlukan waktu pemulihan singkat atau tidak sama sekali. Pasien mungkin mengalami kemerahan atau pembengkakan ringan yang biasanya mereda dalam beberapa jam hingga satu hari."
+    ],
+    "e-n-accordion-item-1100": [
+      "Terapi laser fraksional yang dikombinasikan dengan microneedling dan PRP sangat efektif memperbaiki tampilan bekas jerawat. Pilihan perawatan bergantung pada jenis dan tingkat keparahan bekas luka."
+    ],
+    "e-n-accordion-item-1101": [
+      "Biasanya dianjurkan 5–10 sesi laser toning. Jumlahnya dapat berbeda menurut tingkat keparahan pigmentasi dan respons setiap pasien terhadap perawatan."
+    ],
+    "e-n-accordion-item-1102": [
+      "Dokter spesialis kulit di Korea berpengalaman menangani beragam jenis kulit, termasuk kulit berwarna lebih gelap. Mereka menyesuaikan pengaturan laser untuk meminimalkan risiko efek samping."
+    ],
+    "e-n-accordion-item-1103": [
+      "Perbaikan awal biasanya terlihat dalam beberapa minggu. Hasil penuh dapat memerlukan beberapa bulan, seiring terbentuknya kolagen baru dan berlanjutnya proses penyembuhan kulit."
+    ],
+    "e-n-accordion-item-1290": [
+      "Efeknya biasanya bertahan 4–6 bulan, bergantung pada jenis perawatan dan jenis kulit masing-masing pasien."
+    ],
+    "e-n-accordion-item-1291": [
+      "Ya, sebagian besar skin booster diformulasikan agar aman untuk semua jenis kulit, termasuk kulit sensitif. Sebaiknya berkonsultasi dengan dokter spesialis kulit untuk memilih jenis yang sesuai dengan kulit Anda."
+    ],
+    "e-n-accordion-item-1292": [
+      "Umumnya disarankan 2–3 sesi dengan jarak 3–4 minggu untuk mendapatkan hasil terbaik, dilanjutkan dengan perawatan pemeliharaan setiap 4–6 bulan."
+    ],
+    "e-n-accordion-item-1293": [
+      "Waktu pemulihan singkat. Pasien mungkin mengalami sedikit kemerahan atau pembengkakan di lokasi suntikan, yang biasanya mereda dalam beberapa jam hingga satu hari."
+    ]
+  }
+}

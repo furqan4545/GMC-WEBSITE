@@ -43,6 +43,60 @@
 
   const languageNames = { en: 'English', zh: '简体中文', id: 'Bahasa Indonesia', th: 'ภาษาไทย', ru: 'Русский', tw: '繁體中文' };
   const navigationLabels = {
+    'zh-TW': {
+      about: '關於我們',
+      categories: {
+        'double-eyelid-surgery': '外科手術',
+        'skin-dermatology-treatments': '美學療程',
+        'smile-lasik': '近視雷射',
+        'dental-veneers': '牙科美學',
+      },
+      pages: {
+        services: '服務項目',
+        'care-team': '醫療團隊',
+        'best-price-guarantee': '最佳價格保證',
+        'gmc-verification-process': 'GMC 驗證流程',
+        blog: '部落格',
+        'bna-gallery': '案例展示',
+        partners: '合作夥伴',
+        faqs: '常見問題',
+        'double-eyelid-surgery': '雙眼皮手術',
+        blepharoplasty: '眼瞼整形手術',
+        'ptosis-correction': '眼瞼下垂矯正術',
+        canthoplasty: '開眼角手術',
+        'revision-eye-surgery': '眼整重修手術',
+        rhinoplasty: '隆鼻手術',
+        'revision-rhinoplasty': '二次隆鼻／隆鼻重修手術',
+        'hump-reduction-surgery': '鼻樑隆起縮減手術',
+        'alar-reduction-surgery': '鼻翼縮減手術',
+        'full-face-lift-surgery': '全臉拉皮',
+        'mini-facelift': '迷你拉皮',
+        'forehead-lift-brow-lift': '額頭拉皮',
+        'neck-lift-surgery': '頸部拉皮',
+        'breast-augmentation-surgery': '隆乳手術',
+        'breast-reduction-surgery': '縮胸手術',
+        'breast-lift-surgery': '提乳手術',
+        'breast-revision-surgery': '乳房重建手術',
+        'cheekbone-reduction-surgery': '顴骨縮小手術',
+        'chin-augmentation-surgery': '下巴整形',
+        'jaw-reduction-surgery': '下顎削骨手術',
+        'double-jaw-surgery': '雙顎手術',
+        'hair-transplant': '植髮手術',
+        liposuction: '抽脂手術',
+        'tummy-tuck': '腹部拉皮',
+        'skin-dermatology-treatments': '皮膚與皮膚醫學',
+        'skin-boosters': '水光針',
+        'lifting-tightening-treatments': '拉皮與緊緻護理',
+        'botox-fillers': '肉毒桿菌與填充劑',
+        'smile-lasik': '全飛秒近視雷射',
+        'custom-lasik': '客製化雷射',
+        'cataract-presbyopia-surgery': '白內障與老花眼手術',
+        'dental-veneers': '即日牙科瓷貼片',
+        'dental-implants': '一日完成牙科植牙',
+        'gum-contouring': '牙齦整形',
+        'teeth-whitening': '牙齒美白',
+      },
+    },
     id: {
       about: 'Tentang kami',
       categories: {
@@ -59,10 +113,20 @@
         'bna-gallery': 'Galeri',
         partners: 'Mitra kami',
         faqs: 'Pertanyaan umum',
+        canthoplasty: 'Kantoplasti',
+        'revision-rhinoplasty': 'Rinoplasti revisi',
+        'hump-reduction-surgery': 'Pengurangan tonjolan hidung',
+        'alar-reduction-surgery': 'Pengecilan cuping hidung',
+        'full-face-lift-surgery': 'Pengencangan wajah penuh',
+        'mini-facelift': 'Pengencangan wajah mini',
+        'neck-lift-surgery': 'Pengencangan leher',
+        liposuction: 'Sedot lemak',
+        'tummy-tuck': 'Pengencangan perut',
         'skin-dermatology-treatments': 'Perawatan kulit',
         'skin-boosters': 'Skin booster',
         'lifting-tightening-treatments': 'Pengencangan kulit',
         'botox-fillers': 'Botox dan filler',
+        'cataract-presbyopia-surgery': 'Katarak dan presbiopia',
       },
     },
     th: {
@@ -82,17 +146,52 @@
         'bna-gallery': 'แกลเลอรี',
         partners: 'พันธมิตรของเรา',
         faqs: 'คำถามที่พบบ่อย',
+        'double-eyelid-surgery': 'ทำตาสองชั้น',
+        blepharoplasty: 'ศัลยกรรมเปลือกตา',
+        'ptosis-correction': 'แก้ไขภาวะหนังตาตก',
+        canthoplasty: 'ศัลยกรรมมุมตา',
+        'revision-eye-surgery': 'แก้ไขศัลยกรรมตา',
+        rhinoplasty: 'ศัลยกรรมจมูก',
+        'revision-rhinoplasty': 'แก้จมูก',
+        'hump-reduction-surgery': 'ลดปุ่มกระดูกสันจมูก',
+        'alar-reduction-surgery': 'ตัดปีกจมูก',
+        'full-face-lift-surgery': 'ดึงหน้าทั้งใบหน้า',
+        'mini-facelift': 'ดึงหน้าแบบมินิ',
+        'forehead-lift-brow-lift': 'ยกหน้าผาก',
+        'neck-lift-surgery': 'ยกกระชับลำคอ',
+        'breast-augmentation-surgery': 'เสริมหน้าอก',
+        'breast-reduction-surgery': 'ลดขนาดหน้าอก',
+        'breast-lift-surgery': 'ยกกระชับหน้าอก',
+        'breast-revision-surgery': 'แก้ไขศัลยกรรมหน้าอก',
+        'cheekbone-reduction-surgery': 'ลดโหนกแก้ม',
+        'chin-augmentation-surgery': 'เสริมคาง',
+        'jaw-reduction-surgery': 'ลดขนาดกราม',
+        'double-jaw-surgery': 'ผ่าตัดขากรรไกรบนและล่าง',
+        'hair-transplant': 'ปลูกผม',
+        liposuction: 'ดูดไขมัน',
+        'tummy-tuck': 'ผ่าตัดกระชับหน้าท้อง',
         'skin-dermatology-treatments': 'การรักษาผิวหนัง',
         'skin-boosters': 'สกินบูสเตอร์',
         'lifting-tightening-treatments': 'ยกกระชับผิว',
         'botox-fillers': 'โบท็อกซ์และฟิลเลอร์',
+        'smile-lasik': 'แก้ไขสายตาด้วย SMILE®',
+        'custom-lasik': 'เลสิกเฉพาะบุคคล',
+        'cataract-presbyopia-surgery': 'ต้อกระจกและสายตายาวตามวัย',
+        'dental-veneers': 'วีเนียร์ภายในวันเดียว',
+        'dental-implants': 'รากฟันเทียมภายในวันเดียว',
+        'gum-contouring': 'ตกแต่งเหงือก',
+        'teeth-whitening': 'ฟอกสีฟัน',
       },
+    },
+    ru: {
+      pages: { 'skin-boosters': 'Скинбустеры' },
     },
   };
   const aestheticsPages = new Set(['skin-dermatology-treatments', 'skin-boosters', 'lifting-tightening-treatments', 'botox-fillers']);
   const localePath = location.pathname.split('/')[1];
-  const locale = localePath === 'tw' ? 'zh-TW' : localePath;
-  const [title, introduction, consultation, findTreatment, treatments, menu, closeMenu, language, skip, navigation] = copy[locale] || copy.en;
+  const activeLanguage = Object.hasOwn(languageNames, localePath) ? localePath : 'en';
+  const locale = activeLanguage === 'tw' ? 'zh-TW' : activeLanguage;
+  const [title, introduction, consultation, findTreatment, treatments, menu, closeMenu, language, skip, navigation] = copy[locale];
   const localizedNav = navigationLabels[locale];
   const body = document.body;
   const content = document.querySelector('main.site-main, .elementor-location-single, .elementor-location-archive, main');
@@ -112,14 +211,17 @@
   };
   const sourceLink = (source, className = '') => link(source.textContent.trim(), source.getAttribute('href'), className);
   const linkSlug = source => source.pathname.split('/').filter(Boolean).at(-1);
+  const navHref = (source) => {
+    if (source.origin === location.origin && source.pathname.startsWith('/tw/') && aestheticsPages.has(linkSlug(source))) {
+      const prefix = activeLanguage === 'en' ? '' : `/${activeLanguage}`;
+      return prefix + source.pathname.slice(3) + source.search + source.hash;
+    }
+    return source.getAttribute('href');
+  };
   const navLink = (source, className = '') => {
     const page = linkSlug(source);
     const label = localizedNav?.pages[page] || source.textContent.trim();
-    let href = source.getAttribute('href');
-    if (localizedNav && source.pathname.startsWith('/tw/') && aestheticsPages.has(page)) {
-      href = source.pathname.replace('/tw/', `/${locale}/`) + source.search + source.hash;
-    }
-    const anchor = link(label, href, className);
+    const anchor = link(label, navHref(source), className);
     const current = source.getAttribute('aria-current');
     if (current) anchor.setAttribute('aria-current', current);
     return anchor;
@@ -187,7 +289,7 @@
     const list = element('ul', 'gmc-sub-list');
     const nodes = source.submenu ? source.submenu.querySelectorAll('a[href]') : [];
     const candidates = uniqueLinks(nodes);
-    if (!candidates.some(node => node.getAttribute('href') === source.primary.getAttribute('href'))) {
+    if (!candidates.some(node => navHref(node) === navHref(source.primary))) {
       candidates.unshift(source.primary);
     }
     for (const entry of candidates) {
@@ -212,7 +314,7 @@
     const menuPanel = element('div', 'gmc-treatment-panel');
     for (const group of treatmentSources) {
       const details = element('details', 'gmc-treatment-group');
-      const label = localizedNav?.categories[linkSlug(group.primary)] || group.primary.textContent.trim();
+      const label = localizedNav?.categories?.[linkSlug(group.primary)] || group.primary.textContent.trim();
       details.append(element('summary', '', label), sectionLinks(group));
       menuPanel.append(details);
     }
@@ -223,22 +325,34 @@
   const langs = legacy.querySelectorAll('.elementor-element-2599253f .elementor-nav-menu--main li > a[href]');
   if (langs.length) {
     const list = element('ul', 'gmc-sub-list gmc-languages');
+    const traditionalOnly = location.pathname === '/tw/plastic-surgery/face-lift/facial-contouring/';
+    const languageNote = traditionalOnly ? element('li', 'gmc-language-note', '此頁面目前僅提供繁體中文。') : null;
+    if (languageNote) languageNote.id = 'gmc-language-note';
     for (const item of langs) {
       const currentPath = new URL(item.href).pathname.split('/')[1];
       const code = Object.hasOwn(languageNames, currentPath) ? currentPath : 'en';
       const entry = element('li');
-      const anchor = link(languageNames[code], item.getAttribute('href'));
-      anchor.lang = code === 'tw' ? 'zh-TW' : code;
-      if ((copy[locale] ? localePath : 'en') === code) anchor.setAttribute('aria-current', 'true');
+      const unavailable = traditionalOnly && code !== 'tw';
+      const option = unavailable
+        ? element('span', 'gmc-language-unavailable', languageNames[code])
+        : link(languageNames[code], item.getAttribute('href'));
+      option.lang = code === 'tw' ? 'zh-TW' : code;
+      if (activeLanguage === code) option.setAttribute('aria-current', 'true');
+      if (unavailable) {
+        option.setAttribute('role', 'link');
+        option.setAttribute('aria-disabled', 'true');
+        option.setAttribute('aria-describedby', languageNote.id);
+      }
       const flag = item.querySelector('img');
       if (flag) {
         const image = flag.cloneNode(false);
         image.alt = '';
-        anchor.prepend(image);
+        option.prepend(image);
       }
-      entry.append(anchor);
+      entry.append(option);
       list.append(entry);
     }
+    if (languageNote) list.append(languageNote);
     addItem(disclosure(language, list, 'gmc-language-menu'));
   }
   nav.append(navList);

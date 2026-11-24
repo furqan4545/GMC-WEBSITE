@@ -1,0 +1,665 @@
+{
+  "tabs": {
+    "e-n-tab-title-481231521": [
+      "About GMC"
+    ],
+    "e-n-tab-title-481231522": [
+      "Body"
+    ],
+    "e-n-tab-title-481231523": [
+      "Breast"
+    ],
+    "e-n-tab-title-481231524": [
+      "Chin"
+    ],
+    "e-n-tab-title-481231525": [
+      "Eyes"
+    ],
+    "e-n-tab-title-481231526": [
+      "Face Lift"
+    ],
+    "e-n-tab-title-481231527": [
+      "Jaw"
+    ],
+    "e-n-tab-title-481231528": [
+      "Rhinoplasty"
+    ],
+    "e-n-tab-title-481231529": [
+      "Skin / Dermatology"
+    ]
+  },
+  "headings": {
+    "a06ba35": [
+      "About GMC"
+    ],
+    "675e3de": [
+      "Body Contouring"
+    ],
+    "a565a51": [
+      "Liposuction"
+    ],
+    "a25def3": [
+      "Breast Surgery"
+    ],
+    "91ee5eb": [
+      "Breast Lift"
+    ],
+    "bfb6aa5": [
+      "Breast Reduction Surgery"
+    ],
+    "163490a": [
+      "Breast Revision Surgery"
+    ],
+    "26f5939": [
+      "Nipple and Areola Surgery"
+    ],
+    "2ff1a07": [
+      "Chin Surgery"
+    ],
+    "e6b061c": [
+      "Blepharoplasty"
+    ],
+    "67fd834": [
+      "Canthoplasty"
+    ],
+    "691998d": [
+      "Double Eyelid Surgery"
+    ],
+    "de3b9ad": [
+      "Revision Eye Surgery"
+    ],
+    "28c3a39": [
+      "Brow Lift"
+    ],
+    "7d8bcb1": [
+      "Extended Deep Plane and SMAS Facelift"
+    ],
+    "e8ab975": [
+      "Mini Facelift"
+    ],
+    "6deaace": [
+      "Double Jaw Surgery"
+    ],
+    "e914273": [
+      "Rhinoplasty"
+    ],
+    "4483a7c": [
+      "Revision Rhinoplasty"
+    ],
+    "f2995ba": [
+      "Lifting & Tightening"
+    ],
+    "6ac0803": [
+      "Skin / Dermatology Treatments"
+    ],
+    "3b34a46": [
+      "Skin Boosters"
+    ]
+  },
+  "questions": {
+    "e-n-accordion-item-1810": [
+      "Why Choose GMC?"
+    ],
+    "e-n-accordion-item-1811": [
+      "Will your services cost me more?"
+    ],
+    "e-n-accordion-item-1812": [
+      "Why do you provide your services for free?"
+    ],
+    "e-n-accordion-item-1813": [
+      "Why would clinics want to work with you if they have to pay you?"
+    ],
+    "e-n-accordion-item-1814": [
+      "Are you licensed?"
+    ],
+    "e-n-accordion-item-1815": [
+      "Do I need to pay a deposit?"
+    ],
+    "e-n-accordion-item-1816": [
+      "What if I encounter an issue with my procedure after leaving Korea?"
+    ],
+    "e-n-accordion-item-1817": [
+      "How do you choose your partner hospitals and clinics?"
+    ],
+    "e-n-accordion-item-1090": [
+      "What’s the difference between a Brazilian Butt Lift and Butt Implants?"
+    ],
+    "e-n-accordion-item-1091": [
+      "How long does it take to recover from Hip Dip Surgery?"
+    ],
+    "e-n-accordion-item-1092": [
+      "Are body contouring results permanent?"
+    ],
+    "e-n-accordion-item-1093": [
+      "Who is a good candidate for body contouring?"
+    ],
+    "e-n-accordion-item-8560": [
+      "How long does the recovery process take?"
+    ],
+    "e-n-accordion-item-8561": [
+      "How do I know if I’m a good candidate for Liposuction?"
+    ],
+    "e-n-accordion-item-8562": [
+      "Will Liposuction help me lose weight?"
+    ],
+    "e-n-accordion-item-1680": [
+      "How do I choose between Breast Augmentation, Reduction, and Lift?"
+    ],
+    "e-n-accordion-item-1681": [
+      "Can I combine Breast Surgery with other procedures?"
+    ],
+    "e-n-accordion-item-1682": [
+      "How long is the recovery period for Breast Surgery?"
+    ],
+    "e-n-accordion-item-1683": [
+      "What types of implants are used in Breast Augmentation?"
+    ],
+    "e-n-accordion-item-1200": [
+      "Can I breastfeed after a Breast Lift?"
+    ],
+    "e-n-accordion-item-1201": [
+      "Is there significant scarring after Breast Lift surgery?"
+    ],
+    "e-n-accordion-item-1202": [
+      "What’s the difference between a Breast Lift and Breast Augmentation?"
+    ],
+    "e-n-accordion-item-7450": [
+      "Can I combine Breast Reduction Surgery with other procedures?"
+    ],
+    "e-n-accordion-item-7451": [
+      "Will there be noticeable scarring after Breast Reduction Surgery?"
+    ],
+    "e-n-accordion-item-7452": [
+      "What is the recovery process like for Breast Reduction Surgery?"
+    ],
+    "e-n-accordion-item-7453": [
+      "How do I know if I am a good candidate for Breast Reduction Surgery?"
+    ],
+    "e-n-accordion-item-2360": [
+      "How long is the recovery period for Breast Revision Surgery?"
+    ],
+    "e-n-accordion-item-2361": [
+      "Will I need to replace my implants during Breast Revision Surgery?"
+    ],
+    "e-n-accordion-item-2362": [
+      "What is Capsular Contracture?"
+    ],
+    "e-n-accordion-item-2363": [
+      "When should I consider Breast Revision Surgery?"
+    ],
+    "e-n-accordion-item-2480": [
+      "Will there be noticeable scarring after Nipple or Areola Surgery?"
+    ],
+    "e-n-accordion-item-2481": [
+      "What is the recovery process like for Nipple and Areola Surgery?"
+    ],
+    "e-n-accordion-item-2482": [
+      "How do I know if I need Nipple or Areola Surgery?"
+    ],
+    "e-n-accordion-item-2483": [
+      "Can I combine Nipple or Areola Surgery with other Breast procedures?"
+    ],
+    "e-n-accordion-item-2530": [
+      "What are the risks or complications associated with Genioplasty (Chin surgery)?"
+    ],
+    "e-n-accordion-item-2531": [
+      "What is the recovery process like after Genioplasty (Chin Surgery)?"
+    ],
+    "e-n-accordion-item-2532": [
+      "How long do the results of Genioplasty (Chin Surgery) last?"
+    ],
+    "e-n-accordion-item-2533": [
+      "Will there be visible scars after Genioplasty (Chin Surgery)?"
+    ],
+    "e-n-accordion-item-1990": [
+      "Is there visible scarring after blepharoplasty?"
+    ],
+    "e-n-accordion-item-1991": [
+      "What is the difference between upper and lower blepharoplasty?"
+    ],
+    "e-n-accordion-item-1992": [
+      "How long does the recovery process take?"
+    ],
+    "e-n-accordion-item-1993": [
+      "How much does blepharoplasty cost in Korea?"
+    ],
+    "e-n-accordion-item-1690": [
+      "What is the difference between lateral and epicanthoplasty?"
+    ],
+    "e-n-accordion-item-1691": [
+      "Is Canthoplasty permanent?"
+    ],
+    "e-n-accordion-item-1692": [
+      "How long is the recovery period for Canthoplasty?"
+    ],
+    "e-n-accordion-item-1693": [
+      "How much does Canthoplasty cost in Korea?"
+    ],
+    "e-n-accordion-item-6720": [
+      "Am I a good candidate for Double Eyelid Surgery?"
+    ],
+    "e-n-accordion-item-6721": [
+      "How long does recovery take?"
+    ],
+    "e-n-accordion-item-6722": [
+      "What are the risks of Double Eyelid Surgery?"
+    ],
+    "e-n-accordion-item-6723": [
+      "Which method is better: Incisional or Non-Incisional Double Eyelid Surgery?"
+    ],
+    "e-n-accordion-item-2370": [
+      "Am I a good candidate for Revision Eye Surgery?"
+    ],
+    "e-n-accordion-item-2371": [
+      "What are the risks of Revision Eye Surgery?"
+    ],
+    "e-n-accordion-item-2372": [
+      "What is the recovery like?"
+    ],
+    "e-n-accordion-item-2373": [
+      "How is Revision Eye Surgery different from the initial procedure?"
+    ],
+    "e-n-accordion-item-1790": [
+      "Are there any risks associated with a Brow Lift?"
+    ],
+    "e-n-accordion-item-1791": [
+      "How do I know if I need a Brow Lift or Eyelid Surgery?"
+    ],
+    "e-n-accordion-item-1792": [
+      "Is a Brow Lift painful?"
+    ],
+    "e-n-accordion-item-1793": [
+      "How long do the results of a Brow Lift last?"
+    ],
+    "e-n-accordion-item-2420": [
+      "Do I need a SMAS Facelift or an Extended Deep Plane Facelift?"
+    ],
+    "e-n-accordion-item-2421": [
+      "How does an Extended Deep Plane Facelift differ from a traditional facelift?"
+    ],
+    "e-n-accordion-item-2422": [
+      "Who is a good candidate for these Facelifts?"
+    ],
+    "e-n-accordion-item-2423": [
+      "Will there be noticeable scarring?"
+    ],
+    "e-n-accordion-item-2424": [
+      "How long does the recovery process take?"
+    ],
+    "e-n-accordion-item-1360": [
+      "How long does a Mini Facelift last?"
+    ],
+    "e-n-accordion-item-1361": [
+      "What’s the difference between a Mini Facelift and a traditional Facelift?"
+    ],
+    "e-n-accordion-item-1362": [
+      "Who is a good candidate for a Mini Facelift?"
+    ],
+    "e-n-accordion-item-1363": [
+      "Is a Mini Facelift painful?"
+    ],
+    "e-n-accordion-item-4920": [
+      "Will I need braces before and after Double Jaw Surgery?"
+    ],
+    "e-n-accordion-item-4921": [
+      "Is Double Jaw Surgery painful?"
+    ],
+    "e-n-accordion-item-4922": [
+      "How do I know if I need Double Jaw Surgery?"
+    ],
+    "e-n-accordion-item-4923": [
+      "What is the recovery process like after Double Jaw Surgery?"
+    ],
+    "e-n-accordion-item-2130": [
+      "What is the recovery time for Rhinoplasty?"
+    ],
+    "e-n-accordion-item-2131": [
+      "Is Rhinoplasty in Korea expensive?"
+    ],
+    "e-n-accordion-item-2132": [
+      "What are the risks of Rhinoplasty?"
+    ],
+    "e-n-accordion-item-2133": [
+      "Can Rhinoplasty fix breathing problems?"
+    ],
+    "e-n-accordion-item-1800": [
+      "How long should I wait before considering Revision Rhinoplasty?"
+    ],
+    "e-n-accordion-item-1801": [
+      "Is Revision Rhinoplasty more expensive than the initial surgery?"
+    ],
+    "e-n-accordion-item-1802": [
+      "What are the risks associated with Revision Rhinoplasty?"
+    ],
+    "e-n-accordion-item-1803": [
+      "Will my breathing improve after Revision Rhinoplasty?"
+    ],
+    "e-n-accordion-item-8750": [
+      "How do I choose between Ulthera and Thread Lifting?"
+    ],
+    "e-n-accordion-item-8751": [
+      "How long do the results of these treatments last?"
+    ],
+    "e-n-accordion-item-8752": [
+      "Is there any downtime associated with these treatments?"
+    ],
+    "e-n-accordion-item-1100": [
+      "What is the best treatment for acne scars?"
+    ],
+    "e-n-accordion-item-1101": [
+      "How many sessions are required to treat pigmentation?"
+    ],
+    "e-n-accordion-item-1102": [
+      "Are laser treatment safe for all skin types?"
+    ],
+    "e-n-accordion-item-1103": [
+      "How long does it take to see results from scar removal?"
+    ],
+    "e-n-accordion-item-1290": [
+      "How long do the effects of skin boosters last?"
+    ],
+    "e-n-accordion-item-1291": [
+      "Are skin boosters safe for sensitive skin?"
+    ],
+    "e-n-accordion-item-1292": [
+      "How many sessions are needed for optimal results?"
+    ],
+    "e-n-accordion-item-1293": [
+      "Is there any downtime after skin booster treatments?"
+    ]
+  },
+  "answers": {
+    "e-n-accordion-item-1810": [
+      "Simplify Your Journey",
+      "Let us take care of the planning, so you can focus on a stress-free experience. From your trip to your procedure, we’ll handle every detail, ensuring your journey is smooth and hassle-free.",
+      "No Extra Costs to You",
+      "Our services are provided at no additional cost! This means you’ll save both time and money by choosing GMC.",
+      "Top Medical Facilities in Korea",
+      "We connect you with Gangnam’s top clinics, ensuring you receive the highest standard of care. Our dedicated team matches you with the ideal doctor or surgeon, providing a safe, comfortable, and fully supported experience throughout your medical journey."
+    ],
+    "e-n-accordion-item-1811": [
+      "It might sound too good to be true, but with GMC, our services truly come at no extra cost to you! Unlike many agencies that inflate quotes to earn higher commissions, we guarantee you’ll pay the same amount—or less—than if you went directly to the clinic.",
+      "With our",
+      "Best Price Guarantee",
+      ", we ensure that booking through GMC is always the cheaper option. Thanks to our exclusive partnerships, we often secure discounted rates and additional promotional offers, giving you the best value and expert support every step of the way!"
+    ],
+    "e-n-accordion-item-1812": [
+      "At GMC, our services are completely free for patients because we receive a service fee from our partner clinics. Choosing GMC doesn’t mean you’ll pay more—in fact, with our",
+      "Best Price Guarantee",
+      ", we ensure that booking through us will",
+      "always",
+      "be more affordable. Thanks to our exclusive partnerships, we secure discounted rates that are cheaper than if you contact the hospital directly!",
+      "We’re here to save you money, minimize your costs, and provide a stress-free experience from start to finish!"
+    ],
+    "e-n-accordion-item-1813": [
+      "The answer is simple: we make their lives easier!",
+      "By managing marketing, patient communication, and pre-procedure arrangements, we save clinics valuable time and resources. Our complimentary services, personalized customer care, and seamless coordination lighten their workload and reduce costs, enabling them to focus on what they do best—delivering exceptional medical care.",
+      "Partnering with GMC creates a win-win for both clinics and patients!"
+    ],
+    "e-n-accordion-item-1814": [
+      "Yes, Gangnam Medical Concierge is proud to be a government-licensed agency accredited by the Korean government for medical tourism. You can verify our business license on Medical Korea using our registration number: A-2025-01-02-06129."
+    ],
+    "e-n-accordion-item-1815": [
+      "Yes, a deposit is required to secure your surgery date. Most clinics typically ask for 10% of the total surgery fee as a deposit. Don’t worry—this amount will be deducted from your total surgery cost when you arrive."
+    ],
+    "e-n-accordion-item-1816": [
+      "No need to worry—we’re here for you even after you leave Korea. If any concerns or complications arise, simply reach out to us. GMC will act as your dedicated advocate, communicating with the clinic on your behalf to ensure the issue is addressed promptly and effectively. You’re never alone; our commitment to your care doesn’t end when you board your flight home."
+    ],
+    "e-n-accordion-item-1817": [
+      "At GMC, we carefully select clinics and hospitals that prioritize patient safety and consistently deliver outstanding results. But we don’t stop there—we also focus on the doctors. Our team ensures that each patient is paired with a highly experienced and skilled surgeon whose expertise we’ve personally vetted.",
+      "We take proactive measures to ensure you won’t be assigned to less experienced doctors, prioritizing your well-being and satisfaction every step of the way.",
+      "Learn more about our strict vetting process",
+      "here",
+      "."
+    ],
+    "e-n-accordion-item-1090": [
+      "A Brazilian Butt Lift (BBL) uses your own fat to enhance the shape of the buttocks, while butt implants use silicone to add volume. BBL results feel more natural but require enough donor fat, whereas implants are ideal for those who lack sufficient fat."
+    ],
+    "e-n-accordion-item-1091": [
+      "Most patients can return to normal activities within 2-3 weeks. Full recovery, including swelling reduction and optimal results, may take up to 3 months."
+    ],
+    "e-n-accordion-item-1092": [
+      "Yes, the results are generally permanent, provided the patient maintains a stable weight and follows post-operative care instructions."
+    ],
+    "e-n-accordion-item-1093": [
+      "Ideal candidates are individuals who are close to their target weight, have specific areas of concern, and are in good overall health."
+    ],
+    "e-n-accordion-item-8560": [
+      "Most patients can return to light activities within a few days, but full recovery, including swelling reduction, typically takes 2-3 weeks."
+    ],
+    "e-n-accordion-item-8561": [
+      "Ideal candidates are individuals who are close to their target weight but have localized fat deposits that don’t respond to diet or exercise."
+    ],
+    "e-n-accordion-item-8562": [
+      "Liposuction is not a weight-loss procedure but is designed to reshape and contour specific areas of the body."
+    ],
+    "e-n-accordion-item-1680": [
+      "Your surgeon will help determine the best procedure based on your body type, aesthetic goals, and overall health."
+    ],
+    "e-n-accordion-item-1681": [
+      "Yes, Breast Surgery is often combined with other procedures like a tummy tuck or liposuction for a more comprehensive body contouring result."
+    ],
+    "e-n-accordion-item-1682": [
+      "The initial recovery period is about 1-2 weeks, during which swelling and bruising are common. Full recovery, where you can resume all activities, usually takes 4-6 weeks."
+    ],
+    "e-n-accordion-item-1683": [
+      "The most common types of implants used in breast augmentation are silicone and saline implants. Silicone implants offer a natural feel and are widely popular, while saline implants are filled with sterile salt water and provide a firmer feel."
+    ],
+    "e-n-accordion-item-1200": [
+      "In many cases, patients can still breastfeed after a breast lift. However, this depends on the individual and the extent of the surgery. It is important to discuss this with your surgeon during the consultation."
+    ],
+    "e-n-accordion-item-1201": [
+      "Scarring is minimized through advanced surgical techniques, and over time, scars will fade and become less noticeable."
+    ],
+    "e-n-accordion-item-1202": [
+      "Breast lift surgery focuses on lifting and reshaping sagging breasts, while breast augmentation adds volume using implants. Many patients combine both procedures to achieve the desired shape and size."
+    ],
+    "e-n-accordion-item-7450": [
+      "Yes, many patients opt to combine Breast Reduction Surgery with other procedures, such as a Breast lift or Liposuction, for a more comprehensive result."
+    ],
+    "e-n-accordion-item-7451": [
+      "While some scarring is inevitable, surgeons in Korea use advanced techniques to minimize scarring and ensure that it fades over time. Scars are typically placed in inconspicuous areas, such as under the breast fold."
+    ],
+    "e-n-accordion-item-7452": [
+      "The initial recovery period lasts about 2-3 weeks, during which time you should avoid strenuous activities. Full recovery typically takes 6-8 weeks, with most patients returning to normal activities within this timeframe."
+    ],
+    "e-n-accordion-item-7453": [
+      "You may be a good candidate for breast reduction surgery if you experience physical discomfort due to the size of your breasts, such as back, neck, or shoulder pain, or if you feel self-conscious about your breast size."
+    ],
+    "e-n-accordion-item-2360": [
+      "The initial recovery period lasts 1-2 weeks, with full recovery taking about 4-6 weeks."
+    ],
+    "e-n-accordion-item-2361": [
+      "This depends on your individual case. Some patients choose to replace their implants with new ones, while others may opt to remove them entirely."
+    ],
+    "e-n-accordion-item-2362": [
+      "Capsular contracture is the hardening of scar tissue around an implant, causing discomfort and a distorted appearance. Breast Revision Surgery can correct this issue."
+    ],
+    "e-n-accordion-item-2363": [
+      "You should consider Breast Revision Surgery if you’re experiencing complications like implant rupture or capsular contracture, or if you’re dissatisfied with the results of your previous surgery."
+    ],
+    "e-n-accordion-item-2480": [
+      "Scarring is minimal and typically fades over time. Surgeons in Korea use advanced techniques to ensure that scars are placed discreetly and heal well."
+    ],
+    "e-n-accordion-item-2481": [
+      "Recovery is generally quick, with most patients returning to normal activities within 1-2 weeks. Full recovery takes about 4-6 weeks, during which time you should avoid strenuous activities."
+    ],
+    "e-n-accordion-item-2482": [
+      "You may be a candidate for nipple or areola surgery if you feel self-conscious about the size, shape, or appearance of your nipples or areolas, or if you experience functional issues such as inverted nipples."
+    ],
+    "e-n-accordion-item-2483": [
+      "Yes, many patients opt to combine these surgeries with other Breast procedures, such as Breast Augmentation or Breast Lift, to achieve comprehensive results."
+    ],
+    "e-n-accordion-item-2530": [
+      "While generally safe, genioplasty can have risks like infection, nerve damage, or changes in sensation. Swelling and bruising are common but temporary. Consulting with an experienced surgeon minimizes these risks​."
+    ],
+    "e-n-accordion-item-2531": [
+      "Recovery usually involves some swelling and bruising that subsides in a few weeks. Most patients return to normal activities within a week, although full healing and final results may take several months​."
+    ],
+    "e-n-accordion-item-2532": [
+      "Genioplasty results are typically long-lasting since the procedure permanently alters the bone structure. With proper care, these results can last a lifetime, making it a worthwhile investment for many​."
+    ],
+    "e-n-accordion-item-2533": [
+      "In most cases, genioplasty incisions are made inside the mouth, which means there are no visible external scars. For procedures that require an external incision under the chin, scarring is usually minimal and can fade significantly over time with proper care."
+    ],
+    "e-n-accordion-item-1990": [
+      "Scarring is minimal and usually well-hidden within the natural folds of the eyelids. Over time, scars become nearly invisible."
+    ],
+    "e-n-accordion-item-1991": [
+      "Upper blepharoplasty targets sagging or drooping eyelids, while lower blepharoplasty focuses on reducing puffiness and bags under the eyes. Both procedures can be performed simultaneously for a more comprehensive rejuvenation."
+    ],
+    "e-n-accordion-item-1992": [
+      "Initial recovery for Blepharoplasty takes about 1-2 weeks, with swelling and bruising gradually subsiding. Full recovery may take up to 3 months as scars heal and the final results settle."
+    ],
+    "e-n-accordion-item-1993": [
+      "The cost varies depending on the clinic, the surgeon’s expertise, and whether you undergo upper, lower, or combined blepharoplasty. However, Korean clinics generally offer competitive pricing with high-quality outcomes."
+    ],
+    "e-n-accordion-item-1690": [
+      "Lateral canthoplasty targets the outer corners of the eyes to make them appear wider and more elongated, while epicanthoplasty focuses on adjusting the inner corners to create a more open and youthful look."
+    ],
+    "e-n-accordion-item-1691": [
+      "Yes, the results of canthoplasty are generally long-lasting. However, as with all surgeries, natural aging can affect the results over time."
+    ],
+    "e-n-accordion-item-1692": [
+      "The initial recovery takes about 1-2 weeks, during which swelling and bruising will gradually subside. Full recovery can take up to 2 months as the final results settle."
+    ],
+    "e-n-accordion-item-1693": [
+      "The cost varies depending on the clinic and the surgeon’s expertise, but Korean clinics generally offer competitive pricing while maintaining high standards of care."
+    ],
+    "e-n-accordion-item-6720": [
+      "Candidates typically are those who want to enhance their eyelid appearance, have realistic expectations, and are in good overall health. It’s crucial to consult with a qualified surgeon."
+    ],
+    "e-n-accordion-item-6721": [
+      "Initial recovery takes about 1-2 weeks, with swelling and bruising subsiding over this period. Full recovery, including the fading of scars, may take 1-3 months."
+    ],
+    "e-n-accordion-item-6722": [
+      "Potential risks include asymmetry, scarring, or an unnatural appearance. Choosing a skilled surgeon minimizes these risks."
+    ],
+    "e-n-accordion-item-6723": [
+      "The best method depends on your eye anatomy and desired outcome. Incisional surgery is more permanent, while non-incisional surgery is less invasive and offers quicker recovery but may not last as long."
+    ],
+    "e-n-accordion-item-2370": [
+      "Candidates are those who have had a previous eyelid surgery but are dissatisfied with the results due to aesthetic or functional issues."
+    ],
+    "e-n-accordion-item-2371": [
+      "Like any surgery, risks include infection, bleeding, and scarring. However, with an experienced surgeon, these risks can be minimized."
+    ],
+    "e-n-accordion-item-2372": [
+      "Initial recovery takes about 1-2 weeks, with full results visible in 3-6 months. Patients may experience swelling and bruising during the early recovery phase."
+    ],
+    "e-n-accordion-item-2373": [
+      "Revision surgery often requires more advanced techniques to address complications, scar tissue, or structural issues left by the initial surgery."
+    ],
+    "e-n-accordion-item-1790": [
+      "As with any surgical procedure, there are potential risks such as infection, scarring, or changes in skin sensation. However, these risks are minimized when the surgery is performed by a skilled and experienced surgeon."
+    ],
+    "e-n-accordion-item-1791": [
+      "A consultation with your surgeon can help determine whether a brow lift or eyelid surgery would best address your concerns. In some cases, a combination of both procedures is recommended for optimal results."
+    ],
+    "e-n-accordion-item-1792": [
+      "Most patients experience minimal pain post-surgery, which can be managed with prescribed pain medication. Any discomfort usually subsides within a few days."
+    ],
+    "e-n-accordion-item-1793": [
+      "Results from a Brow Lift can last up to 10 years or more, depending on factors like skin quality, lifestyle, and aging."
+    ],
+    "e-n-accordion-item-2420": [
+      "The choice between a SMAS and an Extended Deep Plane facelift depends on the extent of facial aging and desired outcomes.",
+      "The SMAS facelift is ideal for individuals seeking to address moderate sagging and achieve natural results with enhanced jawline and neck definition.",
+      "The Extended Deep Plane facelift is better suited for those with more advanced facial aging, as it offers comprehensive rejuvenation of the mid-face, cheeks, jawline, and neck, resulting in more dramatic and longer-lasting results.",
+      "Consulting with a qualified plastic surgeon is essential to determine which technique is best suited to your needs."
+    ],
+    "e-n-accordion-item-2421": [
+      "The Extended Deep Plane Facelift repositions deeper facial layers for a more natural and longer-lasting result, whereas a traditional facelift primarily tightens the skin."
+    ],
+    "e-n-accordion-item-2422": [
+      "Ideal candidates are individuals with moderate to severe facial aging, including sagging in the mid-face, jowls, and neck."
+    ],
+    "e-n-accordion-item-2423": [
+      "Scars are minimal and strategically placed, typically behind the ears or along the hairline, ensuring they are discreet and fade over time."
+    ],
+    "e-n-accordion-item-2424": [
+      "Initial recovery takes 2-3 weeks, with full recovery typically within 2-3 months."
+    ],
+    "e-n-accordion-item-1360": [
+      "Results from a mini facelift can last anywhere from 5 to 10 years, depending on factors like age, skin type, and lifestyle habits."
+    ],
+    "e-n-accordion-item-1361": [
+      "A Mini Facelift is less invasive, with smaller incisions and a focus on the lower face. It requires less recovery time compared to a traditional Facelift, which addresses more extensive facial aging."
+    ],
+    "e-n-accordion-item-1362": [
+      "Ideal candidates are individuals in their 40s to 50s who are experiencing early signs of aging, such as mild to moderate sagging in the lower face and jawline."
+    ],
+    "e-n-accordion-item-1363": [
+      "The procedure is usually performed under local anesthesia, so discomfort is minimal during surgery. Post-operative pain is generally mild and can be managed with medication."
+    ],
+    "e-n-accordion-item-4920": [
+      "In many cases, orthodontic treatment (such as braces) is required before and after surgery to properly align the teeth and jaws."
+    ],
+    "e-n-accordion-item-4921": [
+      "While the surgery itself is performed under general anesthesia, patients may experience discomfort during the recovery period. Pain management techniques and medications will be provided by your surgeon."
+    ],
+    "e-n-accordion-item-4922": [
+      "If you experience severe bite problems, jaw misalignment, or facial asymmetry that affects your daily life, you may be a candidate for double jaw surgery. A thorough consultation with a specialist is necessary to determine your suitability."
+    ],
+    "e-n-accordion-item-4923": [
+      "Initial recovery takes about 3-4 weeks, during which time patients may experience swelling, discomfort, and dietary restrictions. Full recovery can take 6-12 months, depending on the individual."
+    ],
+    "e-n-accordion-item-2130": [
+      "The initial recovery typically takes 1-2 weeks, during which swelling and bruising will gradually subside. Full recovery can take 1-3 months as the final results settle."
+    ],
+    "e-n-accordion-item-2131": [
+      "Rhinoplasty in Korea is competitively priced compared to other countries. Pricing varies depending on the complexity of the surgery and the surgeon’s expertise."
+    ],
+    "e-n-accordion-item-2132": [
+      "As with any surgery, rhinoplasty carries risks such as infection, bleeding, and scarring. However, with Korea’s experienced surgeons and advanced techniques, the risks are minimized."
+    ],
+    "e-n-accordion-item-2133": [
+      "Yes, rhinoplasty can address functional issues such as deviated septums or other structural problems that affect breathing."
+    ],
+    "e-n-accordion-item-1800": [
+      "It’s recommended to wait at least 6-12 months after your initial rhinoplasty to allow the nose to fully heal and settle before undergoing revision surgery."
+    ],
+    "e-n-accordion-item-1801": [
+      "Yes, revision rhinoplasty tends to be more expensive due to its complexity and the additional time and expertise required."
+    ],
+    "e-n-accordion-item-1802": [
+      "Risks include infection, scarring, and difficulty achieving the desired outcome due to scar tissue and altered nasal structures from the first surgery. However, experienced surgeons in Korea are skilled in minimizing these risks."
+    ],
+    "e-n-accordion-item-1803": [
+      "If breathing issues are due to structural problems from the initial surgery, revision rhinoplasty can help correct these issues and improve airflow."
+    ],
+    "e-n-accordion-item-8750": [
+      "Ulthera is ideal for overall skin tightening and lifting without visible changes immediately, while Thread Lifting provides an immediate lifting effect and is suitable for targeted areas like the cheeks or jawline."
+    ],
+    "e-n-accordion-item-8751": [
+      "Results vary by procedure. Ulthera and Shurink typically last 12-18 months, while Thread Lifting can last up to 18 months. Thermage and InMode results can last 1-2 years with proper maintenance."
+    ],
+    "e-n-accordion-item-8752": [
+      "Most treatments have minimal to no downtime. Patients may experience mild redness or swelling, but this usually subsides within a few hours to a day."
+    ],
+    "e-n-accordion-item-1100": [
+      "Fractional laser therapy combined with microneedling and PRP is highly effective for improving the appearance of acne scars. The choice of treatment depends on the type and severity of the scars."
+    ],
+    "e-n-accordion-item-1101": [
+      "Typically, 5-10 sessions of laser toning are recommended, but the number can vary based on the severity of pigmentation and individual response to treatment."
+    ],
+    "e-n-accordion-item-1102": [
+      "Korean dermatologists are skilled in treating diverse skin types, including darker skin tones, using customized laser settings to minimize the risk of side effects."
+    ],
+    "e-n-accordion-item-1103": [
+      "Initial improvement is often visible within a few weeks, but full results may take several months as new collagen forms and the skin continues to heal."
+    ],
+    "e-n-accordion-item-1290": [
+      "The effects typically last between 4-6 months, depending on the specific treatment and individual skin type."
+    ],
+    "e-n-accordion-item-1291": [
+      "Yes, most skin boosters are formulated to be safe for all skin types, including sensitive skin. However, it’s best to consult with a dermatologist to choose the right treatment for your skin type."
+    ],
+    "e-n-accordion-item-1292": [
+      "Generally, 2-3 sessions spaced 3-4 weeks apart are recommended for the best results, followed by maintenance treatments every 4-6 months."
+    ],
+    "e-n-accordion-item-1293": [
+      "Downtime is minimal. Patients may experience slight redness or swelling at the injection sites, which typically subsides within a few hours to a day."
+    ]
+  }
+}

@@ -131,7 +131,7 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 }
 .gmc-treatment-group > .gmc-sub-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 0 8px; }
 .gmc-language-menu > .gmc-languages { right: 0; left: auto; }
-.gmc-header .gmc-sub-list a {
+.gmc-header .gmc-sub-list :is(a, .gmc-language-unavailable) {
   min-height: 44px;
   display: flex;
   align-items: center;
@@ -143,6 +143,8 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   line-height: 1.3;
 }
 .gmc-languages a[aria-current] { font-weight: 700; }
+.gmc-header .gmc-language-unavailable { color: var(--gmc-muted); }
+.gmc-language-note { padding: 7px 12px; color: var(--gmc-muted); font-size: .85rem; }
 .gmc-languages img { width: 22px; height: 16px; object-fit: cover; }
 .gmc-header .gmc-menu-toggle {
   display: none;

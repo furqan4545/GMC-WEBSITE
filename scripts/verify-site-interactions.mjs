@@ -72,6 +72,18 @@ async function checkNavigation(page, locale) {
   }
 
   const about = page.locator('.gmc-about-menu');
+  const menuLabels = {
+    en: ['About', 'FAQs', 'Double Eyelid Surgery'],
+    zh: ['关于我们', '常见问题', '双眼皮手术'],
+    tw: ['關於我們', '常見問題', '雙眼皮手術'],
+    id: ['Tentang kami', 'Pertanyaan umum', 'Operasi Kelopak Mata Ganda'],
+    th: ['เกี่ยวกับเรา', 'คำถามที่พบบ่อย', 'ทำตาสองชั้น'],
+    ru: ['О нас', 'Часто задаваемые вопросы', 'Двойном веке'],
+  };
+  const [aboutLabel, faqLabel, eyeLabel] = menuLabels[locale.code];
+  assert.equal(await about.locator(':scope > summary').textContent(), aboutLabel);
+  assert.equal(await page.locator(`.gmc-nav-action[href="${locale.path}faqs/"]`).textContent(), faqLabel);
+  assert.equal(await page.locator(`.gmc-treatment-group a[href="${locale.path}double-eyelid-surgery/"]`).textContent(), eyeLabel);
   await about.locator(':scope > summary').press('Enter');
   await visibleDetails(about, true);
   assert.ok(await about.locator('a:visible').count() > 0);
@@ -83,6 +95,10 @@ async function checkNavigation(page, locale) {
   await openTreatments.press('Enter');
   const groups = treatments.locator('.gmc-treatment-group');
   assert.equal(await groups.count(), 4);
+  const aesthetics = await groups.nth(1).locator('a').evaluateAll(links => links.map(a => new URL(a.href).pathname));
+  assert.deepEqual(aesthetics, [
+    'skin-dermatology-treatments/', 'skin-boosters/', 'lifting-tightening-treatments/', 'botox-fillers/',
+  ].map(slug => locale.path + slug));
   let reachableTreatments = 0;
   for (const group of await groups.all()) {
     const summary = group.locator(':scope > summary');
@@ -97,23 +113,40 @@ async function checkNavigation(page, locale) {
   await openTreatments.press('Escape');
   await visibleDetails(treatments, false);
 
-  const picker = page.locator('.gmc-language-menu > summary');
-  await picker.press('Enter');
-  const links = page.locator('.gmc-languages a');
-  assert.equal(await links.count(), languages.length);
-  assert.equal(await page.locator('.gmc-languages a[aria-current]').count(), 1);
-  for (const language of languages) {
-    const anchor = page.locator(`.gmc-languages a[lang="${language.lang}"]`);
-    assert.equal(new URL(await anchor.getAttribute('href'), base).href, new URL(language.path, base).href);
-  }
   const destination = languages[(languages.indexOf(locale) + 1) % languages.length];
-  await Promise.all([
-    page.waitForURL(new URL(destination.path, base).href),
-    page.locator(`.gmc-languages a[lang="${destination.lang}"]`).click(),
-  ]);
-  await page.locator('.gmc-languages a[aria-current]').waitFor({ state: 'attached' });
-  assert.equal(await page.locator('.gmc-languages a[aria-current]').getAttribute('lang'), destination.lang);
-  if (handset) assert.equal(await page.locator('.gmc-menu-toggle').getAttribute('aria-expanded'), 'false');
+  for (const slug of ['', 'faqs/', 'all-blog-posts/page/2/']) {
+    if (slug) {
+      await go(page, locale.path + slug);
+      if (handset) await toggle.click();
+    }
+    await page.locator('.gmc-language-menu > summary').press('Enter');
+    const links = page.locator('.gmc-languages a');
+    const selected = page.locator('.gmc-languages a[aria-current]');
+    assert.equal(await links.count(), languages.length);
+    assert.equal(await selected.getAttribute('lang'), locale.lang);
+    for (const language of languages) {
+      const anchor = page.locator(`.gmc-languages a[lang="${language.lang}"]`);
+      assert.equal(new URL(await anchor.getAttribute('href'), base).href, new URL(language.path + slug, base).href);
+    }
+    await Promise.all([
+      page.waitForURL(new URL(destination.path + slug, base).href, { waitUntil: 'commit' }),
+      page.locator(`.gmc-languages a[lang="${destination.lang}"]`).click(),
+    ]);
+    await selected.waitFor({ state: 'attached' });
+    assert.equal(await selected.getAttribute('lang'), destination.lang);
+    if (handset) assert.equal(await toggle.getAttribute('aria-expanded'), 'false');
+  }
+  if (locale.code === 'tw') {
+    const traditionalOnly = '/tw/plastic-surgery/face-lift/facial-contouring/';
+    await go(page, traditionalOnly);
+    if (handset) await toggle.click();
+    await page.locator('.gmc-language-menu > summary').click();
+    assert.equal(await page.locator('.gmc-languages img:visible').count(), 6);
+    assert.equal(await page.locator('.gmc-languages a[href]').count(), 1);
+    assert.equal(await page.locator('.gmc-languages a[aria-current]').getAttribute('href'), traditionalOnly);
+    assert.equal(await page.locator('#gmc-language-note').textContent(), '此頁面目前僅提供繁體中文。');
+    assert.equal(await page.locator('.gmc-languages [role="link"][aria-disabled="true"][aria-describedby="gmc-language-note"]:visible').count(), 5);
+  }
   return reachableTreatments;
 }
 
@@ -153,9 +186,10 @@ async function checkHome(page, locale) {
 
 async function checkFaq(page, locale) {
   await go(page, `${locale.path}faqs/`);
+  assert.equal(await page.locator('html').getAttribute('lang'), locale.lang);
   await page.locator('.e-n-tabs.e-activated').first().waitFor();
   const tabs = page.locator('.e-n-tabs-heading [role="tab"]');
-  assert.ok(await tabs.count() > 0);
+  assert.equal(await tabs.count(), 9);
   const touch = await page.evaluate(() => matchMedia('(pointer: coarse)').matches);
   let questions = 0;
   const controls = await tabs.evaluateAll(nodes => nodes.map(node => ({ id: node.id, panel: node.getAttribute('aria-controls') })));
@@ -172,34 +206,40 @@ async function checkFaq(page, locale) {
     const result = await active.evaluate(async section => {
       const summaries = [...section.querySelectorAll('details.e-n-accordion-item > summary')];
       const failures = [];
-      const groups = new Map();
-      for (const summary of summaries) {
-        const accordion = summary.closest('.e-n-accordion') || section;
-        if (!groups.has(accordion)) groups.set(accordion, []);
-        groups.get(accordion).push(summary);
-      }
       const waitUntil = async condition => {
-        const deadline = performance.now() + 2000;
+        const deadline = performance.now() + 4000;
         while (!condition() && performance.now() < deadline) await new Promise(resolve => setTimeout(resolve, 16));
         return condition();
       };
-      await Promise.all([...groups.values()].map(async group => {
-        for (const summary of group) {
-          const details = summary.parentElement;
-          if (summary.getAttribute('aria-expanded') === 'true') summary.click();
-          if (!await waitUntil(() => !details.open)) failures.push(summary.textContent.trim());
-          summary.click();
-          if (!await waitUntil(() => details.open && summary.getAttribute('aria-expanded') === 'true')) failures.push(summary.textContent.trim());
-          summary.click();
-          if (!await waitUntil(() => !details.open && summary.getAttribute('aria-expanded') === 'false')) failures.push(summary.textContent.trim());
+      for (const summary of summaries) {
+        const details = summary.parentElement;
+        const label = summary.textContent.trim();
+        const isExpanded = () => details.open && summary.getAttribute('aria-expanded') === 'true';
+        const isCollapsed = () => !details.open && summary.getAttribute('aria-expanded') === 'false';
+        if (isExpanded()) summary.click();
+        if (!await waitUntil(isCollapsed)) {
+          failures.push(`Question did not start closed: ${label}`);
+          continue;
         }
-      }));
+        summary.click();
+        if (!await waitUntil(isExpanded)) {
+          failures.push(`Question did not open: ${label}`);
+          continue;
+        }
+        const answer = details.querySelector('[role="region"]');
+        if (!await waitUntil(() => answer?.checkVisibility() && answer.getBoundingClientRect().height > 0 && answer.innerText.trim())) {
+          failures.push(`Answer did not render: ${label}`);
+        }
+        summary.click();
+        if (!await waitUntil(isCollapsed)) failures.push(`Question did not close: ${label}`);
+      }
       return { count: summaries.length, failures };
     });
     assert.ok(result.count > 0, panel);
     assert.deepEqual(result.failures, [], panel);
     questions += result.count;
   }
+  assert.equal(questions, 90);
   return { tabs: controls.length, questions };
 }
 
@@ -449,6 +489,7 @@ for (const name of selectedEngines) {
     for (const locale of locales) {
       const page = await context.newPage();
       page.setDefaultTimeout(10000);
+      page.setDefaultNavigationTimeout(30000);
       try {
         for (const flow of flows) {
           const check = checks[flow];

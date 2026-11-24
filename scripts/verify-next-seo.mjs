@@ -41,8 +41,15 @@ for (const [path, file] of Object.entries(pages)) {
     readFile(new URL(builtFile.split('/').map(encodeURIComponent).join('/'), built), 'utf8').then(html => load(html)),
   ]);
 
+  if (path === '/tw/plastic-surgery/face-lift/facial-contouring/') {
+    $source('head link[hreflang]:not([hreflang="zh-TW"])').remove();
+  }
+
   for (const [selector, attribute] of [['html', 'lang'], ['body', 'class']]) {
-    if ($rendered(selector).attr(attribute) !== $source(selector).attr(attribute)) {
+    const expected = selector === 'html' && path.startsWith('/tw/')
+      ? 'zh-TW'
+      : $source(selector).attr(attribute);
+    if ($rendered(selector).attr(attribute) !== expected) {
       errors.push({ path, difference: `${selector}[${attribute}]` });
     }
   }
@@ -65,5 +72,5 @@ if (errors.length) {
   console.error(JSON.stringify(errors.slice(0, 30), null, 2));
   process.exitCode = 1;
 } else {
-  console.log('All compiled pages match the prepared snapshot.');
+  console.log('Search metadata matches, including the zh-TW language tag and the Traditional Chinese-only article alternate.');
 }
