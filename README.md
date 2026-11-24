@@ -36,6 +36,9 @@ Start the Next.js build, then run the existing browser suite against it. The che
 ```sh
 npm run verify:build-seo
 GMC_CHECK_DEPLOYMENT=1 GMC_PREVIEW_URL=http://localhost:3000 npm run verify:browser
+node scripts/verify-site-layout.mjs --url http://localhost:3000
+node scripts/verify-site-interactions.mjs --url http://localhost:3000
+GMC_LINK_AUDIT_BASE=http://localhost:3000 node scripts/verify-site-links.mjs --local --external
 ```
 
-Local audit artifacts list every source URL, metadata differences, and unavailable source files. This includes sitemap URLs which WordPress itself returns as gone.
+The layout audit renders every migrated route in Chromium and WebKit. The link audit checks compiled links, article bookmarks, redirect chains and collection assets. Its optional external pass uses public read-only requests and reports blocked or unreachable destinations. Audit reports are written to `artifacts/`.

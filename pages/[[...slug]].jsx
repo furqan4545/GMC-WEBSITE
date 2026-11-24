@@ -1,5 +1,7 @@
 import { load } from 'cheerio';
 import SitePage from '../components/SitePage';
+import { prepareEditorial } from '../lib/editorial';
+import { repairEditorialMedia } from '../lib/editorial-media';
 import { listPagePaths, loadPage } from '../lib/pages';
 
 // The React pages render at build time. The site scripts hydrate their own controls.
@@ -22,16 +24,20 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const page = await loadPage(pathFromSlug(params?.slug));
+  const pathname = pathFromSlug(params?.slug);
+  const page = await loadPage(pathname);
   if (!page) return { notFound: true };
 
   const $ = load(page.html);
   if ($('head link[rel="canonical"]').length) $('body link[rel="canonical"]').remove();
+  repairEditorialMedia($, pathname);
+  const recommendations = prepareEditorial($, pathname);
   return {
     props: {
       document: {
         head: $('head').html() ?? '',
         body: $('body').html() ?? '',
+        recommendations,
         htmlAttributes: { ...$('html').attr() },
         bodyAttributes: { ...$('body').attr() },
       },

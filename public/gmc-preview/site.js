@@ -550,9 +550,9 @@
 
   if (!isHome) {
     const firstSection = content.querySelector('.e-parent');
-    const topHeading = content.querySelector('h1, h2');
-    const plainTitlePage = body.matches('.page-id-50, .page-id-52, .page-id-46');
-    const blogArchive = /\/all-blog-posts\/?$/.test(location.pathname);
+    const topHeading = [...content.querySelectorAll('h1, h2')].find(heading => heading.textContent.trim());
+    const plainTitlePage = body.matches('.page-id-46, .page-id-50, .page-id-52, .page-id-54, .page-id-58');
+    const blogArchive = /\/all-blog-posts(?:\/page\/\d+)?\/?$/.test(location.pathname);
     const titlePage = blogArchive || body.matches('.page-id-549, .page-id-56, .archive');
     const isArticle = content.classList.contains('elementor-location-single') && body.classList.contains('single-post');
     const firstIsMedia = firstSection
@@ -612,6 +612,9 @@
       } else {
         firstSection.before(heading);
         content.classList.add('gmc-treatment-page');
+        for (const sectionHeading of content.querySelectorAll('h1')) {
+          if (sectionHeading !== heading) promoteHeading(sectionHeading, 'h2');
+        }
       }
       if (originalWrapper && !originalWrapper.textContent.trim()) originalWrapper.remove();
     } else if (titlePage && !content.querySelector('h1')) {
@@ -632,31 +635,37 @@
           headings: ['Blog', 'Weekly Best', 'Plastic Surgery', 'Latest Blogs', 'View All Posts'],
           topics: 'Blog topics',
           categories: ['Plastic surgery', 'Aesthetics', 'Guides', 'Food', 'Activities', 'Stays'],
+          more: 'More articles',
         },
         zh: {
           headings: ['博客', '本周精选', '整形手术', '最新文章', '查看全部文章'],
           topics: '文章主题',
           categories: ['整形手术', '美容', '指南', '美食', '活动', '住宿'],
+          more: '更多文章',
         },
         'zh-TW': {
           headings: ['部落格', '本週精選', '整形外科', '最新文章', '查看所有文章'],
           topics: '文章主題',
           categories: ['整形外科', '醫學美容', '指南', '美食', '活動', '住宿'],
+          more: '更多文章',
         },
         id: {
           headings: ['Blog', 'Pilihan minggu ini', 'Bedah plastik', 'Artikel terbaru', 'Lihat semua artikel'],
           topics: 'Topik blog',
           categories: ['Bedah plastik', 'Estetika', 'Panduan', 'Kuliner', 'Aktivitas', 'Penginapan'],
+          more: 'Artikel lainnya',
         },
         th: {
           headings: ['บล็อก', 'บทความแนะนำประจำสัปดาห์', 'ศัลยกรรมตกแต่ง', 'บทความล่าสุด', 'ดูบทความทั้งหมด'],
           topics: 'หัวข้อบทความ',
           categories: ['ศัลยกรรมตกแต่ง', 'ความงาม', 'คู่มือ', 'อาหาร', 'กิจกรรม', 'ที่พัก'],
+          more: 'บทความเพิ่มเติม',
         },
         ru: {
           headings: ['Блог', 'Лучшее за неделю', 'Пластическая хирургия', 'Последние статьи', 'Смотреть все публикации'],
           topics: 'Темы блога',
           categories: ['Пластическая хирургия', 'Эстетика', 'Гиды', 'Еда', 'Активности', 'Проживание'],
+          more: 'Другие статьи',
         },
       };
       const labels = blogCopy[locale] || blogCopy.en;
@@ -681,6 +690,62 @@
       if (rail.childElementCount) {
         blogCategories.before(rail);
         blogCategories.hidden = true;
+      }
+
+      function blogCard(item, topic, eager) {
+        const original = item.querySelector('.elementor-image-box-title a[href]');
+        const name = original?.textContent.trim();
+        if (!name) return null;
+        const anchor = link('', original.getAttribute('href'), 'gmc-blog-card-link');
+        if (!anchor.hasAttribute('href')) return null;
+        anchor.setAttribute('aria-label', name);
+        const source = item.querySelector('.elementor-image-box-img img');
+        const src = source?.dataset.lazySrc || source?.dataset.src || source?.getAttribute('src');
+        if (src) {
+          const frame = element('span', 'gmc-blog-card-image');
+          const image = element('img');
+          image.alt = source.alt;
+          image.loading = eager ? 'eager' : 'lazy';
+          image.decoding = 'async';
+          const srcset = source.dataset.lazySrcset || source.dataset.srcset || source.getAttribute('srcset');
+          if (srcset) image.srcset = srcset;
+          const sizes = source.dataset.lazySizes || source.getAttribute('sizes');
+          if (sizes) image.sizes = sizes;
+          image.src = src;
+          frame.append(image);
+          anchor.append(frame);
+        }
+        anchor.append(element(topic ? 'span' : 'h3', 'gmc-blog-card-title', name));
+        const card = element('li', 'gmc-blog-card');
+        card.append(anchor);
+        return card;
+      }
+
+      for (const [selector, kind] of [
+        ['.elementor-element-d15c204', 'featured'],
+        ['.elementor-element-a238257', 'topics'],
+        ['.elementor-element-4b82b2a', 'latest'],
+      ]) {
+        const widget = content.querySelector(selector);
+        if (!widget) continue;
+        const topic = kind === 'topics';
+        const featured = kind === 'featured';
+        const selectorForCard = topic ? '.swiper-slide:not(.swiper-slide-duplicate)' : '.e-loop-item:not(.swiper-slide-duplicate)';
+        const items = [...widget.querySelectorAll(selectorForCard)];
+        const cards = items.map((item, index) => blogCard(item, topic, featured && index < 3));
+        if (!cards.length || cards.some(card => !card)) continue;
+        const list = element('ul', 'gmc-blog-grid');
+        const collection = element('div', `gmc-blog-collection gmc-blog-${kind}`);
+        list.append(...(featured ? cards.slice(0, 3) : cards));
+        collection.append(list);
+        if (featured && cards.length > 3) {
+          const more = element('details', 'gmc-blog-more');
+          const remaining = element('ul', 'gmc-blog-grid');
+          remaining.append(...cards.slice(3));
+          more.append(element('summary', '', labels.more), remaining);
+          collection.append(more);
+        }
+        widget.replaceWith(collection);
       }
     }
   }
