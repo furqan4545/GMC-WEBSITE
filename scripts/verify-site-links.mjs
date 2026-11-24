@@ -39,6 +39,7 @@ let compiledOccurrences = 0;
 let consolidatedOccurrences = 0;
 let repairedHrefOccurrences = 0;
 let removedPlaceholderOccurrences = 0;
+let removedUnavailableOccurrences = 0;
 let collectionArticleLinks = 0;
 let collectionGalleryImages = 0;
 
@@ -171,7 +172,11 @@ for (const [path, file] of Object.entries(pages)) {
   repairEditorialLinks(prepared, path);
   const fromSnapshot = hrefs(prepared);
   const removed = Math.max(0, archivedHrefs.length - fromSnapshot.length);
-  removedPlaceholderOccurrences += removed;
+  if (removed) {
+    const placeholders = archivedHrefs.filter(href => href === '#').length - fromSnapshot.filter(href => href === '#').length;
+    removedPlaceholderOccurrences += placeholders;
+    removedUnavailableOccurrences += removed - placeholders;
+  }
   repairedHrefOccurrences += unmatchedHrefCount(archivedHrefs, fromSnapshot) - removed;
   const compiled = builtFile ? load(await readFile(resolve(output, builtFile), 'utf8')) : null;
   if (!compiled) comparisonIssues.push({ path, issue: 'Missing compiled page' });
@@ -342,7 +347,7 @@ const counts = Object.fromEntries(Object.entries(Object.groupBy(links.values(), 
   kind, { targets: items.length, occurrences: items.reduce((total, item) => total + item.occurrences, 0) },
 ]));
 const collections = { articleLinks: collectionArticleLinks, galleryImages: collectionGalleryImages, localTargets: collectionTargets.size, issues: collectionIssues };
-console.log(JSON.stringify({ pages: pageIds.size, preparedOccurrences, compiledOccurrences, consolidatedOccurrences, repairedHrefOccurrences, removedPlaceholderOccurrences, comparisonIssues: comparisonIssues.length, counts, checkedStaticFragments: fragments.size, unresolvedFragments: unresolvedFragments.length, collections }));
+console.log(JSON.stringify({ pages: pageIds.size, preparedOccurrences, compiledOccurrences, consolidatedOccurrences, repairedHrefOccurrences, removedPlaceholderOccurrences, removedUnavailableOccurrences, comparisonIssues: comparisonIssues.length, counts, checkedStaticFragments: fragments.size, unresolvedFragments: unresolvedFragments.length, collections }));
 
 await Promise.all([
   probeLocal ? checkLocalLinks() : null,
@@ -350,7 +355,7 @@ await Promise.all([
 ]);
 const linksByKind = Object.groupBy(links.values(), item => item.kind);
 const report = {
-  pages: pageIds.size, preparedOccurrences, compiledOccurrences, consolidatedOccurrences, repairedHrefOccurrences, removedPlaceholderOccurrences, counts, comparisonIssues, unresolvedFragments, collections,
+  pages: pageIds.size, preparedOccurrences, compiledOccurrences, consolidatedOccurrences, repairedHrefOccurrences, removedPlaceholderOccurrences, removedUnavailableOccurrences, counts, comparisonIssues, unresolvedFragments, collections,
   unmappedLocal: linksByKind['unmapped-local'] || [],
   malformed: linksByKind.invalid || [],
   skipped: [...(linksByKind['skipped-action'] || []), ...(linksByKind['skipped-scheme'] || [])],
