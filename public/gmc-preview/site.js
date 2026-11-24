@@ -471,9 +471,15 @@
         const card = element('article', 'gmc-review');
         const identity = element('div', 'gmc-review-author');
         const image = review.querySelector('.ti-profile-img img');
+        const platformIcon = review.querySelector('.ti-platform-icon img');
         const author = review.querySelector('.ti-name');
         if (image) identity.append(image.cloneNode(false));
         if (author) identity.append(element('strong', '', author.textContent.trim()));
+        if (platformIcon) {
+          const icon = platformIcon.cloneNode(false);
+          icon.classList.add('gmc-review-platform');
+          identity.append(icon);
+        }
         const stars = element('div', 'gmc-review-stars');
         for (const star of review.querySelectorAll('.ti-star')) stars.append(star.cloneNode(false));
         const reviewText = review.querySelector('.ti-review-content');
@@ -634,37 +640,31 @@
           headings: ['Blog', 'Weekly Best', 'Plastic Surgery', 'Latest Blogs', 'View All Posts'],
           topics: 'Blog topics',
           categories: ['Plastic surgery', 'Aesthetics', 'Guides', 'Food', 'Activities', 'Stays'],
-          more: 'More articles',
         },
         zh: {
           headings: ['博客', '本周精选', '整形手术', '最新文章', '查看全部文章'],
           topics: '文章主题',
           categories: ['整形手术', '美容', '指南', '美食', '活动', '住宿'],
-          more: '更多文章',
         },
         'zh-TW': {
           headings: ['部落格', '本週精選', '整形外科', '最新文章', '查看所有文章'],
           topics: '文章主題',
           categories: ['整形外科', '醫學美容', '指南', '美食', '活動', '住宿'],
-          more: '更多文章',
         },
         id: {
           headings: ['Blog', 'Pilihan minggu ini', 'Bedah plastik', 'Artikel terbaru', 'Lihat semua artikel'],
           topics: 'Topik blog',
           categories: ['Bedah plastik', 'Estetika', 'Panduan', 'Kuliner', 'Aktivitas', 'Penginapan'],
-          more: 'Artikel lainnya',
         },
         th: {
           headings: ['บล็อก', 'บทความแนะนำประจำสัปดาห์', 'ศัลยกรรมตกแต่ง', 'บทความล่าสุด', 'ดูบทความทั้งหมด'],
           topics: 'หัวข้อบทความ',
           categories: ['ศัลยกรรมตกแต่ง', 'ความงาม', 'คู่มือ', 'อาหาร', 'กิจกรรม', 'ที่พัก'],
-          more: 'บทความเพิ่มเติม',
         },
         ru: {
           headings: ['Блог', 'Лучшее за неделю', 'Пластическая хирургия', 'Последние статьи', 'Смотреть все публикации'],
           topics: 'Темы блога',
           categories: ['Пластическая хирургия', 'Эстетика', 'Гиды', 'Еда', 'Активности', 'Проживание'],
-          more: 'Другие статьи',
         },
       };
       const labels = blogCopy[locale] || blogCopy.en;
@@ -735,15 +735,8 @@
         if (!cards.length || cards.some(card => !card)) continue;
         const list = element('ul', 'gmc-blog-grid');
         const collection = element('div', `gmc-blog-collection gmc-blog-${kind}`);
-        list.append(...(featured ? cards.slice(0, 3) : cards));
+        list.append(...cards);
         collection.append(list);
-        if (featured && cards.length > 3) {
-          const more = element('details', 'gmc-blog-more');
-          const remaining = element('ul', 'gmc-blog-grid');
-          remaining.append(...cards.slice(3));
-          more.append(element('summary', '', labels.more), remaining);
-          collection.append(more);
-        }
         widget.replaceWith(collection);
       }
     }

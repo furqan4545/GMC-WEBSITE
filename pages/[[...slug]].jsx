@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
 
   const $ = load(page.html);
   if ($('head link[rel="canonical"]').length) $('body link[rel="canonical"]').remove();
-  repairEditorialMedia($, pathname);
+  repairEditorialMedia($);
   const recommendations = prepareEditorial($, pathname);
   enableNativeMedia($);
   return {

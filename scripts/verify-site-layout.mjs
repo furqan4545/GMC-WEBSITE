@@ -71,9 +71,6 @@ async function scrollContent() {
   const main = document.querySelector('#gmc-main, main.site-main, [role="main"], main');
   if (!main) return;
   const lower = [...main.querySelectorAll('.gmc-related, .elementor-element-f26b132, .gmc-collection-pages')];
-  for (const more of main.querySelectorAll('details.gmc-related-more:not([open])')) {
-    more.querySelector(':scope > summary')?.click();
-  }
   const media = [...main.querySelectorAll('img[loading="lazy"], img[data-lazy-src], img[data-src]')];
   const nextFrame = () => new Promise(resolve => {
     const timer = setTimeout(resolve, 80);
@@ -96,6 +93,14 @@ async function scrollContent() {
   const section = lower.findLast(element => element.checkVisibility({ visibilityProperty: true })) || main.lastElementChild;
   section?.scrollIntoView({ block: 'center', behavior: 'instant' });
   await nextFrame();
+  const footerMarks = document.querySelector('.elementor-location-footer .elementor-element-c4300be');
+  footerMarks?.scrollIntoView({ block: 'center', behavior: 'instant' });
+  if (footerMarks) {
+    await Promise.race([
+      Promise.allSettled([...footerMarks.querySelectorAll('img')].map(image => image.decode())),
+      new Promise(resolve => setTimeout(resolve, 800)),
+    ]);
+  }
   if (document.fonts.status === 'loading') {
     await Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 350))]);
   }
@@ -163,6 +168,12 @@ function inspectLayout() {
   if (broken.size) add('broken-image', 'A visible same-site image failed to decode.', [...broken]);
   if (external.size) notes.push({ code: 'external-image', description: 'External images excluded from this local run.', hosts: [...external] });
 
+  const footerMarks = [...document.querySelectorAll('.elementor-location-footer .elementor-element-c4300be img')];
+  if (footerMarks.length !== 4 || footerMarks.some(image =>
+    !visible(image) || !image.currentSrc.includes('/wp-content/uploads/') || !image.naturalWidth)) {
+    add('footer-images', 'Expected four visible, decoded accreditation logos.', footerMarks.length);
+  }
+
   const legacy = main.querySelector('.elementor-element-f26b132');
   if (visible(legacy) && legacy.querySelector('.e-loop-item')) {
     add('legacy-related', 'Legacy related carousel is still visible.');
@@ -171,15 +182,11 @@ function inspectLayout() {
     const grids = [...related.querySelectorAll('.gmc-related-grid')].filter(visible);
     if (!grids.length) add('related-grid', 'Related cards grid is missing or invisible.');
     if (grids.some(grid => grid.scrollWidth > grid.clientWidth + 2)) add('related-overflow', 'Related cards exceed the grid width.');
-    const cards = [...related.querySelectorAll('.gmc-related-card')].filter(visible);
+    const allCards = [...related.querySelectorAll('.gmc-related-card')];
+    const cards = allCards.filter(visible);
     metrics.relatedCards = (metrics.relatedCards || 0) + cards.length;
     if (!cards.length) add('related-cards', 'Related section has no visible cards.');
-    const more = related.querySelector('details.gmc-related-more');
-    if (more) {
-      const summary = more.querySelector('summary');
-      if (!visible(summary) || !more.open) add('related-disclosure', 'Additional related cards could not be opened.');
-      else if (summary.getBoundingClientRect().height < 43) add('related-disclosure-target', 'Related disclosure target is shorter than 44 pixels.');
-    }
+    if (cards.length !== allCards.length) add('related-card-hidden', 'Every related card should be visible.');
     const destinations = new Set();
     for (const card of cards) {
       const bounds = card.getBoundingClientRect();

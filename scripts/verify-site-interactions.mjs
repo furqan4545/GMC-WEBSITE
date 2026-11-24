@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { parseArgs } from 'node:util';
 import { gunzipSync } from 'node:zlib';
+import { load } from 'cheerio';
 import { chromium, devices, webkit } from 'playwright';
 
 const { values } = parseArgs({ options: {
@@ -43,6 +44,7 @@ async function go(page, path) {
   assert.equal(result?.status(), 200, path);
   assert.equal(new URL(page.url()).pathname, new URL(path, base).pathname);
   await page.locator('.gmc-header').waitFor();
+  return result;
 }
 
 async function visibleDetails(locator, expected) {
@@ -203,8 +205,40 @@ async function checkFaq(page, locale) {
 
 async function checkGallery(page, locale) {
   const path = `${locale.path}bna-gallery/`;
-  await go(page, path);
-  await page.locator('.gmc-collection-tile').first().waitFor();
+  const response = await go(page, path);
+  const $ = load(await response.text());
+  const imagePath = image => {
+    const source = image.attr('data-lazy-src') || image.attr('data-src') || image.attr('src');
+    return source && new URL(source, base).pathname;
+  };
+  const expectedFeatured = $('#list-1 .jet-listing-grid__item[data-post-id]:not(.swiper-slide-duplicate)').toArray().flatMap(node => {
+    const original = $(node);
+    const photos = new Set(original.find('img').toArray().map(image => imagePath($(image))));
+    if (!photos.size) {
+      const photo = $('#list-2 .jet-listing-grid__item[data-post-id]').toArray().find(card => $(card).attr('data-post-id') === original.attr('data-post-id'));
+      photos.add(imagePath($(photo).find('img').first()));
+    }
+    const title = original.find('.elementor-widget-text-editor').first().text().trim();
+    return [...photos].map(photo => ({ photo, title }));
+  });
+  const galleryTile = '.gmc-collection-gallery .gmc-collection-tile';
+  await page.locator(galleryTile).first().waitFor();
+  const featured = await page.locator('.gmc-gallery-featured .gmc-collection-tile:visible').all();
+  assert.equal(featured.length, 8);
+  assert.equal(featured.length, expectedFeatured.length);
+  for (const [index, tile] of featured.entries()) {
+    const { photo, title } = expectedFeatured[index];
+    assert.equal(new URL(await tile.locator('img').getAttribute('src'), base).pathname, photo);
+    await tile.scrollIntoViewIfNeeded();
+    await tile.locator('img').evaluate(image => image.decode());
+    await tile.press('Enter');
+    const opened = page.locator('.gmc-collection-photo[open]');
+    await opened.waitFor();
+    assert.equal(await opened.locator('h2').textContent(), title);
+    assert.equal(new URL(await opened.locator('img').getAttribute('src'), base).pathname, photo);
+    await page.keyboard.press('Escape');
+    await opened.waitFor({ state: 'hidden' });
+  }
   const result = await page.evaluate(entries => {
     const inputs = [...document.querySelectorAll('.jet-color-image-list__input')];
     const failures = [];
@@ -259,7 +293,7 @@ async function checkGallery(page, locale) {
   assert.equal(result.photosOpened, galleryEntries.length);
   const deepLink = `${path}?jsf=jet-engine:list-2&tax=category%3A11&pagenum=2`;
   await go(page, deepLink);
-  const photo = page.locator('.gmc-collection-tile').first();
+  const photo = page.locator(galleryTile).first();
   await photo.waitFor();
   assert.equal(await page.locator('.jet-color-image-list__input[value="11"]').isChecked(), true);
   await photo.press('Enter');
@@ -268,7 +302,7 @@ async function checkGallery(page, locale) {
   await dialog.locator('img').evaluate(image => image.decode());
   await page.keyboard.press('Escape');
   assert.equal(await dialog.count(), 0);
-  return result;
+  return { ...result, featuredPhotos: featured.length };
 }
 
 async function checkArchive(page, locale) {
@@ -306,20 +340,14 @@ async function checkArchive(page, locale) {
   return { pages: actual.pages, articleLinks: actual.paths.length };
 }
 
-async function checkDisclosures(page, locale) {
+async function checkEditorialCollections(page, locale) {
   await go(page, `${locale.path}blog/`);
   const weekly = page.locator('.gmc-blog-featured');
   await weekly.waitFor();
-  const more = weekly.locator('.gmc-blog-more');
-  assert.equal(await weekly.locator('a:visible').count(), 3);
-  await more.locator('summary').press('Enter');
-  await visibleDetails(more, true);
-  const blogLinks = weekly.locator('a:visible');
-  const weeklyLinks = await blogLinks.count();
+  const weeklyLinks = await weekly.locator('a:visible').count();
   assert.equal(weeklyLinks, await weekly.locator('a[href]').count());
-  assert.ok(weeklyLinks > 3);
-  await more.locator('summary').press('Enter');
-  await visibleDetails(more, false);
+  assert.equal(weeklyLinks, 11);
+  assert.equal(await weekly.locator('img:visible').count(), weeklyLinks);
 
   await go(page, `${locale.path}plastic-surgery/gum-contouring/`);
   const related = page.locator('.gmc-related');
@@ -328,19 +356,13 @@ async function checkDisclosures(page, locale) {
   const hrefs = await cards.evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
   assert.ok(hrefs.every(href => href && /^https?:\/\/|^\//.test(href)));
   assert.equal(new Set(hrefs).size, hrefs.length);
-  assert.equal(await related.locator('.gmc-related-card:visible').count(), Math.min(3, hrefs.length));
-  if (hrefs.length > 3) {
-    const disclosure = related.locator('details.gmc-related-more');
-    await disclosure.locator('summary').press('Enter');
-    await visibleDetails(disclosure, true);
-    assert.equal(await related.locator('.gmc-related-card:visible').count(), hrefs.length);
-    assert.ok(await cards.evaluateAll(nodes => nodes.every(node => {
-      const bounds = node.getBoundingClientRect();
-      return bounds.width > 0 && bounds.left >= -1 && bounds.right <= innerWidth + 1;
-    })));
-    await disclosure.locator('summary').press('Enter');
-    await visibleDetails(disclosure, false);
-  }
+  assert.equal(hrefs.length, 8);
+  assert.equal(await related.locator('.gmc-related-card:visible').count(), hrefs.length);
+  assert.equal(await related.locator('.gmc-related-card img:visible').count(), hrefs.length);
+  assert.ok(await cards.evaluateAll(nodes => nodes.every(node => {
+    const bounds = node.getBoundingClientRect();
+    return bounds.width > 0 && bounds.left >= -1 && bounds.right <= innerWidth + 1;
+  })));
   return { weeklyLinks, relatedLinks: hrefs.length };
 }
 
@@ -391,7 +413,7 @@ const checks = {
   faqs: checkFaq,
   gallery: checkGallery,
   archive: checkArchive,
-  disclosures: checkDisclosures,
+  disclosures: checkEditorialCollections,
   contact: checkContact,
   bookmarks: checkArticleBookmarks,
 };

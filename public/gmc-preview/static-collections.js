@@ -68,31 +68,39 @@
     return path.startsWith('/wp-content/uploads/') ? path : null;
   }
 
-  function consolidateGallery(entries) {
+  function renderFeaturedGallery(entries) {
     const featured = document.querySelector('#list-1');
     const featuredSection = featured?.closest('.elementor-element-b551a02');
-    const resultsSection = gallery.closest('.e-parent');
-    if (!featuredSection || !resultsSection) return;
+    if (!featuredSection) return;
 
-    const available = new Set(entries.map(entry => photoPath(entry.image)));
+    const available = new Map(entries.map(entry => [photoPath(entry.image), entry]));
     const initialPhotos = new Map([...gallery.querySelectorAll(':scope > [data-post-id]')].map(card => [
       card.dataset.postId,
       photoPath(imageSource(card.querySelector('img'))),
     ]));
-    const cards = [...featured.querySelectorAll('.jet-listing-grid__item[data-post-id]')];
+    const cards = [...featured.querySelectorAll('.jet-listing-grid__item[data-post-id]:not(.swiper-slide-duplicate)')];
     const featuredWrap = featuredSection.querySelector(':scope > .e-con-inner');
+    const grid = element('ul', 'gmc-gallery-featured');
     let covered = cards.length > 0 && featuredWrap?.children.length === 1;
+    grid.id = featured.id;
     for (const card of cards) {
-      const paths = [...card.querySelectorAll('img')].map(image => photoPath(imageSource(image))).filter(Boolean);
-      const original = initialPhotos.get(card.dataset.postId);
-      if (!paths.length && original) paths.push(original);
-      if (!paths.length || paths.some(path => !available.has(path)) || card.querySelector('a[href], audio, video, iframe')) covered = false;
+      const images = [...card.querySelectorAll('img')];
+      const paths = images.map(image => photoPath(imageSource(image)));
+      if (!paths.length) paths.push(initialPhotos.get(card.dataset.postId));
+      const unique = [...new Set(paths)];
       const title = card.querySelector('.elementor-widget-text-editor')?.textContent.trim();
-      if (!title) continue;
-      for (const path of paths) caseTitles.set(path, title);
+      if (title) for (const path of unique.filter(Boolean)) caseTitles.set(path, title);
+      if (unique.some(path => !path || !available.has(path)) || card.querySelector('a[href], audio, video, iframe, picture source')) {
+        covered = false;
+        continue;
+      }
+      for (const path of unique) {
+        const item = element('li');
+        item.append(galleryCard(available.get(path)));
+        grid.append(item);
+      }
     }
-    if (covered) featuredSection.remove();
-    else resultsSection.after(featuredSection);
+    if (covered) featured.replaceWith(grid);
   }
 
   let photoDialog;
@@ -190,7 +198,7 @@
     pager.setAttribute('aria-label', pages);
     originalPager.replaceWith(pager);
     if (gallery) {
-      consolidateGallery(entries);
+      renderFeaturedGallery(entries);
       gallery.classList.add('gmc-collection-gallery');
       document.body.classList.add('gmc-gallery-ready');
     }

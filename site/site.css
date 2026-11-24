@@ -601,6 +601,13 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-review-author, .gmc-review-stars { display: flex; align-items: center; }
 .gmc-review-author { gap: 10px; }
 .gmc-review-author img { width: 34px; height: 34px; border-radius: 50%; }
+.gmc-review-author .gmc-review-platform {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin-inline-start: auto;
+  border-radius: 0;
+}
 .gmc-review-stars { gap: 3px; margin-top: 10px; }
 .gmc-review-stars img { width: 16px; height: 16px; border-radius: 0; }
 @media (max-width: 700px) {
@@ -1093,7 +1100,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   height: auto;
   margin-inline: auto;
 }
-.gmc-media-unavailable { color: var(--gmc-muted); }
 .gmc-redesign .elementor-element-24f99c00 .text-in-circle {
   columns: auto;
   height: auto;
@@ -1186,17 +1192,7 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
   align-items: center;
 }
 .gmc-related-single .gmc-related-card:not(:has(img)) { grid-template-columns: minmax(0, 1fr); }
-.gmc-related-more { margin-block-start: 8px; }
-.gmc-related-more > summary {
-  width: fit-content;
-  min-height: 44px;
-  padding-block: 12px;
-  color: var(--gmc-action, #17483b);
-  font: 600 .94rem/1.35 var(--gmc-text, system-ui, sans-serif);
-  cursor: pointer;
-}
-.gmc-related-more[open] > summary { margin-block-end: 8px; }
-.gmc-related :is(a, summary):focus-visible { outline: 2px solid var(--gmc-action, #17483b); outline-offset: 3px; }
+.gmc-related a:focus-visible { outline: 2px solid var(--gmc-action, #17483b); outline-offset: 3px; }
 @media (hover: hover) and (pointer: fine) {
   .gmc-related-card:hover { border-color: var(--gmc-action, #17483b); }
   .gmc-related-card:hover .gmc-related-title { text-decoration: underline; text-underline-offset: 3px; }
@@ -1341,18 +1337,6 @@ html:lang(zh) .gmc-redesign, html:lang(th) .gmc-redesign, html:lang(ru) .gmc-red
 .gmc-redesign.page-id-549 .gmc-blog-topics .gmc-blog-card-title {
   font: 600 .94rem/1.3 var(--gmc-text);
 }
-.gmc-blog-more { margin-block-start: 12px; }
-.gmc-blog-more > summary {
-  display: list-item;
-  width: fit-content;
-  min-height: 44px;
-  padding-block: 12px;
-  color: var(--gmc-action);
-  font: 600 .95rem/1.3 var(--gmc-text);
-  list-style-position: inside;
-  cursor: pointer;
-}
-.gmc-blog-more[open] > summary { margin-block-end: 12px; }
 @media (hover: hover) and (pointer: fine) {
   .gmc-redesign :is(.elementor-location-archive .elementor-post, .e-loop-item .elementor-element-e08782f) {
     transition: translate var(--gmc-press-duration) var(--gmc-ease), border-color var(--gmc-press-duration) ease;

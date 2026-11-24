@@ -17,7 +17,7 @@ function ArticleGrid({ articles }) {
   );
 }
 
-export default function ArticleRecommendations({ title, moreLabel, articles }) {
+export default function ArticleRecommendations({ title, articles }) {
   const Section = title ? 'section' : 'div';
   const classes = ['gmc-related'];
   if (!title) classes.push('gmc-related-inline');
@@ -26,13 +26,7 @@ export default function ArticleRecommendations({ title, moreLabel, articles }) {
     <Section className={classes.join(' ')} aria-label={title || undefined}>
       <div className="gmc-related-inner">
         {title && <h2>{title}</h2>}
-        <ArticleGrid articles={articles.slice(0, 3)} />
-        {articles.length > 3 && (
-          <details className="gmc-related-more">
-            <summary>{moreLabel}</summary>
-            <ArticleGrid articles={articles.slice(3)} />
-          </details>
-        )}
+        <ArticleGrid articles={articles} />
       </div>
     </Section>
   );
