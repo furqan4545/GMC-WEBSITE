@@ -6,13 +6,12 @@
   function recoverImage(image) {
     if (!(image instanceof HTMLImageElement) || image.closest('picture')) return;
     const failed = attemptedImages.get(image) || new Set();
-    if (image.currentSrc) failed.add(image.currentSrc);
-    if (image.src) failed.add(image.src);
+    if (image.currentSrc || image.src) failed.add(image.currentSrc || image.src);
     attemptedImages.set(image, failed);
     const sources = image.dataset.gmcOriginalSrcset || image.getAttribute('srcset') || image.getAttribute('data-srcset') || image.getAttribute('data-lazy-srcset');
     if (!sources) return;
     image.dataset.gmcOriginalSrcset = sources;
-    const alternatives = sources.split(',').map(candidate => candidate.trim().split(/\s+/)[0]).filter(Boolean);
+    const alternatives = [image.src, ...sources.split(',').map(candidate => candidate.trim().split(/\s+/)[0])].filter(Boolean);
     const fallback = alternatives.map(candidate => {
       try {
         const url = new URL(candidate, location.href);

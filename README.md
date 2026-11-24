@@ -37,6 +37,7 @@ Start the Next.js build, then run the existing browser suite against it. The che
 npm run verify:build-seo
 GMC_CHECK_DEPLOYMENT=1 GMC_PREVIEW_URL=http://localhost:3000 npm run verify:browser
 node scripts/verify-site-layout.mjs --url http://localhost:3000
+node scripts/verify-site-images.mjs --url http://localhost:3000
 node scripts/verify-site-interactions.mjs --url http://localhost:3000
 GMC_LINK_AUDIT_BASE=http://localhost:3000 node scripts/verify-site-links.mjs --local --external
 ```

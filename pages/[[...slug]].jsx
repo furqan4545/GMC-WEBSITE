@@ -1,7 +1,7 @@
 import { load } from 'cheerio';
 import SitePage from '../components/SitePage';
 import { prepareEditorial } from '../lib/editorial';
-import { repairEditorialMedia } from '../lib/editorial-media';
+import { enableNativeMedia, repairEditorialMedia } from '../lib/editorial-media';
 import { listPagePaths, loadPage } from '../lib/pages';
 
 // The React pages render at build time. The site scripts hydrate their own controls.
@@ -32,6 +32,7 @@ export async function getStaticProps({ params }) {
   if ($('head link[rel="canonical"]').length) $('body link[rel="canonical"]').remove();
   repairEditorialMedia($, pathname);
   const recommendations = prepareEditorial($, pathname);
+  enableNativeMedia($);
   return {
     props: {
       document: {
