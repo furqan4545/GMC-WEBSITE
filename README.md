@@ -43,3 +43,21 @@ GMC_LINK_AUDIT_BASE=http://localhost:3000 node scripts/verify-site-links.mjs --l
 ```
 
 The layout audit renders every migrated route in Chromium and WebKit. The link audit checks compiled links, article bookmarks, redirect chains and collection assets. Its optional external pass uses public read-only requests and reports blocked or unreachable destinations. Audit reports are written to `artifacts/`.
+
+## Website analytics
+
+The public Vercel copy uses the **Gangnam Medical Concierge Website** project in PostHog US Cloud. Set `NEXT_PUBLIC_GMC_POSTHOG_KEY` to its write-only project token in the Vercel production environment. `NEXT_PUBLIC_GMC_ANALYTICS_HOST` defaults to `gangnam-medical-website.vercel.app`. Set it to the new public host when moving the copy to its own domain. The hostname guard keeps preview builds and unrelated domains out of production reporting.
+
+After visitors opt in, Web Analytics reports traffic sources, device and geography, visits by language and page type, engagement, and Web Vitals. Product Analytics records named actions for navigation, treatment links, consultation buttons, outbound consultation handoffs, contact channels, FAQs, galleries, and blog interactions. The WordPress form handles everything after the consultation handoff. Page URLs in analytics use public sections, with article and treatment detail pages grouped. Attribution uses recognized sources and media without forwarding incoming URL queries, searches, or campaign text.
+
+Replay runs on eligible public pages after opt-in. It masks text and attributes and blocks media, embedded widgets, and form surfaces inside recordings. Privacy settings are available in all six languages. The PostHog project discards raw client IP data and uses its 30-day replay retention setting.
+
+For a local run against intercepted PostHog requests, build and start with the test token and hostname below. These scripts use fictional data and never call production ingestion.
+
+```sh
+NEXT_PUBLIC_GMC_POSTHOG_KEY=phc_syntheticAnalyticsTestingOnly NEXT_PUBLIC_GMC_ANALYTICS_HOST=127.0.0.1:4191 npm run build
+npm run start -- --port 4191
+node scripts/verify-analytics-consent-ui.mjs --url http://127.0.0.1:4191
+node scripts/verify-analytics-browser.mjs
+node scripts/verify-analytics-replay.mjs
+```

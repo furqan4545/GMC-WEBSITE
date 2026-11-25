@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { gunzipSync } from 'node:zlib';
 import { load } from 'cheerio';
+import { localizeFaqSeo } from '../lib/faq-seo.js';
 
 const snapshot = new URL('../content/', import.meta.url);
 const built = new URL('../.next/server/pages/', import.meta.url);
@@ -41,6 +42,7 @@ for (const [path, file] of Object.entries(pages)) {
     readFile(new URL(builtFile.split('/').map(encodeURIComponent).join('/'), built), 'utf8').then(html => load(html)),
   ]);
 
+  localizeFaqSeo($source, path);
   if (path === '/tw/plastic-surgery/face-lift/facial-contouring/') {
     $source('head link[hreflang]:not([hreflang="zh-TW"])').remove();
   }
@@ -72,5 +74,5 @@ if (errors.length) {
   console.error(JSON.stringify(errors.slice(0, 30), null, 2));
   process.exitCode = 1;
 } else {
-  console.log('Search metadata matches, including the zh-TW language tag and the Traditional Chinese-only article alternate.');
+  console.log('Search metadata matches, including the localized FAQ metadata, zh-TW language tags, and the Traditional Chinese-only article alternate.');
 }

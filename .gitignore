@@ -8,3 +8,4 @@ dist/
 .snapshot-*/
 .DS_Store
 .env*
+public/gmc-preview/analytics/

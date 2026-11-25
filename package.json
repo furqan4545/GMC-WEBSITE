@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Gangnam Medical Concierge website rebuilt in Next.js",
   "scripts": {
+    "predev": "node scripts/build-analytics.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/build-analytics.mjs",
     "build": "next build",
     "start": "next start",
     "preview": "node --watch scripts/preview.mjs",
@@ -21,12 +23,14 @@
   "type": "module",
   "devDependencies": {
     "cheerio": "^1.2.0",
+    "esbuild": "0.28.2",
     "playwright": "^1.65.1"
   },
   "private": true,
   "dependencies": {
     "html-react-parser": "6.1.10",
     "next": "16.4.6",
+    "posthog-js": "1.454.5",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   }

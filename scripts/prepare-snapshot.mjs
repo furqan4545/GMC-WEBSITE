@@ -1,4 +1,4 @@
-import { copyFile, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import { copyFile, cp, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
@@ -192,6 +192,10 @@ try {
   }
   const manifest = { pages, gone, redirects, assetContentTypes };
   await writeFile(resolve(temporary, 'content', 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+  // These are authored Next-side assets, separate from the WordPress capture.
+  for (const path of ['content/faq-localization', 'public/gmc-preview/analytics-consent.css', 'public/gmc-preview/analytics-consent.js']) {
+    await cp(resolve(root, path), resolve(temporary, path), { recursive: true });
+  }
   for (const directory of ['content', 'public']) {
     await rm(resolve(root, directory), { force: true, recursive: true });
     await rename(resolve(temporary, directory), resolve(root, directory));

@@ -16,7 +16,8 @@ const config = {
         source: '/:path*',
         headers: [
           { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
-          { key: 'Content-Security-Policy', value: "form-action 'self'; connect-src 'self'; base-uri 'self'" },
+          { key: 'Content-Security-Policy', value: "form-action 'self'; connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com; base-uri 'self'" },
+          { key: 'Referrer-Policy', value: 'strict-origin' },
         ],
       },
       ...Object.entries(snapshot.assetContentTypes).map(([source, value]) => ({
